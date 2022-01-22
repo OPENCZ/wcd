@@ -14,5 +14,6 @@
   - 表单
     - [Checkbox 复选框](/form/checkbox.md)
     - [Radio 单选框](/form/radio.md)
+    - [Switch 开关](/form/switch.md)
   - 导航
     - [Breadcrumb 面包屑](/navigation/breadcrumb.md)
