@@ -12,6 +12,7 @@
   - 反馈
     - [Spin 加载中](/feedback/spin.md)
   - 表单
+    - [Button 按钮](/form/button.md)
     - [Checkbox 复选框](/form/checkbox.md)
     - [Radio 单选框](/form/radio.md)
     - [Switch 开关](/form/switch.md)
