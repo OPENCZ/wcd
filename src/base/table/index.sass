@@ -1,0 +1,56 @@
+table
+    width: 100%
+    border-collapse: collapse
+    border-spacing: 0
+    +create-border("", var(--color-border))
+
+    &.table-striped
+        thead
+            tr
+                background: var(--color-table-striped)
+
+        tbody
+            tr
+                &:nth-of-type(even)
+                    background: var(--color-table-striped)
+
+    &.table-hover
+        tbody
+            tr
+                transition: .3s
+
+                &:hover
+                    background: var(--color-table-hover)
+
+    caption
+        margin: var(--margin-padding-md) 0
+        color: var(--color-gray-light)
+        font-size: var(--font-size-sm)
+
+    thead
+        background: var(--color-table-header)
+
+    tbody
+        tr
+            &:last-of-type
+                border: none
+
+    tfoot
+        +create-border(top, var(--color-border))
+
+    tr
+        +create-border(bottom, var(--color-border))
+
+        th, td
+            +create-border(left, var(--color-border))
+            padding: var(--margin-padding-md)
+            vertical-align: middle
+
+            &:first-of-type
+                border: none
+
+        th
+            font-weight: normal
+
+        td
+            color: var(--color-gray)
