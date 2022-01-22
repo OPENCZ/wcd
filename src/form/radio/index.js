@@ -1,0 +1,262 @@
+import {pxToVw, $, createCustomElement, CreateHTMLElement, config} from '../../utils';
+
+/**
+ * 单选框组件
+ */
+class RadioComponent extends CreateHTMLElement {
+    /**
+     * 监听属性
+     * @returns {string[]}      需要被监听的属性名
+     */
+    static get observedAttributes() {
+        return ['checked', 'size'];
+    }
+
+    /**
+     * 获取选中状态
+     * @return {boolean}    是否选中
+     */
+    get checked() {
+        return $(this).attr('checked') === 'true';
+    }
+
+    /**
+     *
+     * 获取选中状态
+     * @param bool          是否选中
+     */
+    set checked(bool) {
+        $(this).attr('checked', bool === true || bool === 'true');
+    }
+
+    /**
+     * 获取禁用状态
+     * @return {boolean}    是否禁用
+     */
+    get disabled() {
+        return $(this).attr('disabled') === 'true';
+    }
+
+    /**
+     *
+     * 获取禁用状态
+     * @param bool          是否禁用
+     */
+    set disabled(bool) {
+        $(this).attr('disabled', bool === true || bool === 'true');
+    }
+
+    /**
+     * 获取[value]属性值
+     * @return {boolean}    [value]属性值
+     */
+    get value() {
+        return $(this).attr('value') || '';
+    }
+
+    /**
+     * 设置[value]属性值
+     * @param val           [value]属性值
+     */
+    set value(val) {
+        val !== '' ? $(this).attr('value', val) : '';
+    }
+
+    /**
+     * 当自定义元素的指定属性被增加、移除或更改时被调用
+     * @param name          属性名
+     * @param oldValue      更改前的属性值
+     * @param newValue      新的属性值
+     */
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (oldValue != newValue) {
+            if (name === 'size') {
+                return this.setSizeStyle();
+            }
+
+            if (name === 'checked') {
+                let name = $(this).attr('name');
+
+                if (name && newValue === 'true') {
+                    this.setActiveIndex(name);
+                    this.dispatch('change', this.CustomEventResultParams());
+                }
+
+                !name ? this.dispatch('change', this.CustomEventResultParams()) : '';
+            }
+        }
+    }
+
+    /**
+     * 当自定义元素第一次被连接到文档DOM时被调用
+     */
+    connectedCallback() {
+        this.onClick();
+    }
+
+    /**
+     * 当点击时
+     */
+    onClick() {
+        $(this.shadowRoot).on('click', ev => {
+            ev.stopPropagation();
+            ev.preventDefault();
+
+            if (this.disabled) return;
+
+            let name = this.getAttribute('name') || '',
+                isSelf = false;
+
+            if (name) {
+                $(`${config.prefix}-radio[name="${name}"][checked="true"]`).each(item => {
+                    if (item.disabled) return;
+
+                    this == item && item.checked ? (isSelf = true) : (item.checked = false);
+                });
+            }
+
+            if ((!name && this.checked) || isSelf) return;
+
+            this.checked = true;
+        });
+    }
+
+    /**
+     * 设置激活索引
+     * @param name      组件name属性值
+     */
+    setActiveIndex(name) {
+        !name ? (name = $(this).attr('name')) : '';
+
+        if (!name) return;
+
+        $(`${config.prefix}-radio[name=${name}]`).each((item, i) => {
+            if ($(item).attr('checked') === 'true') {
+                this.activeIndex = i;
+                return false;
+            }
+        });
+    }
+
+    /**
+     * 自定义事件返回数据
+     */
+    CustomEventResultParams() {
+        return {
+            name: $(this).attr('name'),
+            value: this.value,
+            checked: this.checked,
+            disabled: this.disabled,
+            activeIndex: this.activeIndex || 0,
+        };
+    }
+
+    /**
+     * 渲染
+     * @returns {string}    返回html字符串
+     */
+    render() {
+        let size = this.getSize();
+
+        return `
+            <style>
+                :host {
+                    display: inline-flex;
+                }
+                
+                .radio-component {
+                    display: inline-flex;
+                    align-items: center;
+                    cursor: pointer;
+                    user-select: none;
+                }
+                
+                .radio-component .radio-label {
+                    margin-left: ${pxToVw(10)};
+                }
+                
+                .radio-component .radio-label:empty {
+                    margin-left: 0;
+                }
+                
+                .radio-component .radio-icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: ${size};
+                    height: ${size};
+                    border:  ${pxToVw(2)} solid var(--color-border);
+                    border-radius: 50%;
+                    transition: .3s;
+                }
+                
+                .radio-component .radio-icon span {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    transform: scale(0);
+                    transition: inherit;
+                }
+                
+                :host([checked=true]) .radio-component .radio-icon {
+                    border-color: var(--color-theme)
+                }
+                
+                :host([checked=true]) .radio-component .radio-icon span {
+                    background: var(--color-theme);
+                    transform: scale(.5);
+                }
+                
+                :host([disabled=true]) .radio-component {
+                    cursor: not-allowed;
+                }
+                
+                :host([disabled=true]) .radio-component .radio-icon {
+                    border-color: var(--color-disabled);
+                    background: var(--color-disabled-bg);
+                }
+                
+                :host([disabled=true][checked=true]) .radio-component .radio-icon span {
+                    background: var(--color-disabled);
+                }
+                
+                :host([disabled=true]) .radio-component .radio-label {
+                    color: var(--color-disabled);
+                }
+            </style>
+            
+            <div class="radio-component">
+                <div class="radio-icon">
+                    <span></span>
+                </div>
+                <span class="radio-label">
+                    <slot></slot>
+                </span>
+            </div>
+        `;
+    }
+
+    /**
+     * 获取尺寸
+     * @return {string}     返回换算后的尺寸
+     */
+    getSize() {
+        let size = $(this).attr('size') || 32;
+        return pxToVw(size - 2);
+    }
+
+    /**
+     * 设置尺寸样式
+     */
+    setSizeStyle() {
+        let size = this.getSize();
+
+        $(this.shadowRoot).find('.radio-icon').css({
+            width: size,
+            height: size,
+        });
+    }
+}
+
+createCustomElement(RadioComponent);
