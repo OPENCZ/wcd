@@ -1,0 +1,46 @@
+$justify-content-align-content: flex-start, center, flex-end, space-around, space-between
+
+$align-content: stretch
+
+$flex-direction: column
+
+$align-items-align-self: flex-start, flex-end, center, stretch, baseline
+
+// 创建弹性盒元素子项在横轴、竖轴的排列方式样式类
+=justify-content-align-content()
+    @each $value in $justify-content-align-content
+        .justify-content-#{$value}
+            display: flex !important
+            justify-content: $value
+
+        .align-content-#{$value}
+            display: flex !important
+            flex-wrap: wrap
+            align-content: $value
+            >*
+                width: 100%
+
+    @each $value in $align-content
+        .align-content-#{$value}
+            display: flex !important
+            flex-wrap: wrap
+            align-content: $value
+            >*
+                width: 100%
+
+// 创建弹性盒元素子项在横轴排列方式为样式类
+=flex-direction()
+    @each $value in $flex-direction
+        .flex-direction-#{$value}
+            display: flex !important
+            flex-direction: $value
+
+// 创建弹性盒元素子项在竖轴的排列方式和子项修改排列方式样式类
+=align-items-align-self()
+    @each $value in $align-items-align-self
+        .align-items-#{$value}
+            display: flex !important
+            align-items: $value
+
+        //.align-self-#{$value}
+        //    align-self: $value
