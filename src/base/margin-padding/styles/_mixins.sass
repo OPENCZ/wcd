@@ -1,0 +1,32 @@
+$margin-padding-data: (lg: var(--margin-padding-lg), md: var(--margin-padding-md), sm: var(--margin-padding-sm))
+
+// 创建内/外边距不同方向样式类
+=margin-padding-position($styleName)
+    @each $position in (top, right, bottom, left)
+        @each $key, $value in $margin-padding-data
+            .#{$styleName + "-" + $position + "-" + $key}
+                #{$styleName + "-" + $position}: $value
+
+        .#{$styleName + "-" + $position}
+            #{$styleName + "-" + $position}: 0
+
+// 创建内/外边距基础样式类
+=margin-padding-base($styleName)
+    @each $key, $value in $margin-padding-data
+        .#{$styleName + "-" + $key}
+            #{$styleName}: $value
+
+// 创建内/外边距样式类
+=margin-padding($styleName)
+    +margin-padding-base($styleName)
+
+    +margin-padding-position($styleName)
+
+    .#{$styleName}
+        #{$styleName}: 0
+
+    @if $styleName == margin
+        .margin-auto
+            margin: auto
+
+
