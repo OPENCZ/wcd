@@ -1,0 +1,31 @@
+$font-size-data: (xl: var(--font-size-xl), lg: var(--font-size-lg), md: var(--font-size-md), sm: var(--font-size-sm), default: var(--font-size), xs: var(--font-size-xs))
+
+$title-data: (h1: var(--font-size-xl), h2: var(--font-size-lg), h3: var(--font-size-md), h4: var(--font-size-sm), h5: var(--font-size), h6: var(--font-size-xs))
+
+// 创建h1~h6样式
+=h1-h6
+    @each $styleName, $styleVal in $title-data
+        #{$styleName}
+            font-size: $styleVal
+
+// 创建字体尺寸样式类
+=font-size
+    @each $styleName, $styleVal in $font-size-data
+        @if $styleName == default
+            .font-size
+                font-size: $styleVal
+
+        @else
+            .font-size-#{$styleName}
+                font-size: $styleVal
+
+// 创建文本对齐样式类
+=text-align
+    @each $value in (left, center, right)
+        .text-align-#{$value}
+            text-align: #{$value}
+
+=font-weight
+    @each $value in (bold, normal)
+        .font-weight-#{$value}
+            font-weight: #{$value}
