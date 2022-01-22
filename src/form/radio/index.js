@@ -70,20 +70,9 @@ class RadioComponent extends CreateHTMLElement {
      */
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
-            if (name === 'size') {
-                return this.setSizeStyle();
-            }
-
-            if (name === 'checked') {
-                let name = $(this).attr('name');
-
-                if (name && newValue === 'true') {
-                    this.setActiveIndex(name);
-                    this.dispatch('change', this.CustomEventResultParams());
-                }
-
-                !name ? this.dispatch('change', this.CustomEventResultParams()) : '';
-            }
+            name === 'checked'
+                ? this.dispatch('change', this.CustomEventResultParams())
+                : $(this.shadowRoot).find('.reset-style').html(this.resetStyle());
         }
     }
 
@@ -111,30 +100,13 @@ class RadioComponent extends CreateHTMLElement {
                 $(`${config.prefix}-radio[name="${name}"][checked="true"]`).each(item => {
                     if (item.disabled) return;
 
-                    this == item && item.checked ? (isSelf = true) : (item.checked = false);
+                    this == item && item.checked ? isSelf = true : item.checked = false;
                 });
             }
 
             if ((!name && this.checked) || isSelf) return;
 
             this.checked = true;
-        });
-    }
-
-    /**
-     * 设置激活索引
-     * @param name      组件name属性值
-     */
-    setActiveIndex(name) {
-        !name ? (name = $(this).attr('name')) : '';
-
-        if (!name) return;
-
-        $(`${config.prefix}-radio[name=${name}]`).each((item, i) => {
-            if ($(item).attr('checked') === 'true') {
-                this.activeIndex = i;
-                return false;
-            }
         });
     }
 
@@ -147,7 +119,6 @@ class RadioComponent extends CreateHTMLElement {
             value: this.value,
             checked: this.checked,
             disabled: this.disabled,
-            activeIndex: this.activeIndex || 0,
         };
     }
 
@@ -156,8 +127,6 @@ class RadioComponent extends CreateHTMLElement {
      * @returns {string}    返回html字符串
      */
     render() {
-        let size = this.getSize();
-
         return `
             <style>
                 :host {
@@ -183,9 +152,7 @@ class RadioComponent extends CreateHTMLElement {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    width: ${size};
-                    height: ${size};
-                    border:  ${pxToVw(2)} solid var(--color-border);
+                    border: var(--border-1px-width) solid var(--color-border);
                     border-radius: 50%;
                     transition: .3s;
                 }
@@ -226,6 +193,8 @@ class RadioComponent extends CreateHTMLElement {
                 }
             </style>
             
+            <style class="reset-style">${this.resetStyle()}</style>
+            
             <div class="radio-component">
                 <div class="radio-icon">
                     <span></span>
@@ -238,24 +207,19 @@ class RadioComponent extends CreateHTMLElement {
     }
 
     /**
-     * 获取尺寸
-     * @return {string}     返回换算后的尺寸
+     * resetStyle
+     * @return {string}     重置后的样式
      */
-    getSize() {
+    resetStyle() {
         let size = $(this).attr('size') || 32;
-        return pxToVw(size - 2);
-    }
+        size = pxToVw(size - 2);
 
-    /**
-     * 设置尺寸样式
-     */
-    setSizeStyle() {
-        let size = this.getSize();
-
-        $(this.shadowRoot).find('.radio-icon').css({
-            width: size,
-            height: size,
-        });
+        return `
+            .radio-component .radio-icon {
+                width: ${size};
+                height: ${size};
+            }
+        `
     }
 }
 
