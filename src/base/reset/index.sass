@@ -1,0 +1,112 @@
+*
+    box-sizing: border-box
+    &::before,&::after
+        box-sizing: border-box
+
+ul, p, h1, h2, h3, h4, h5, h6
+    margin: 0
+    padding: 0
+
+html,body
+    -webkit-text-size-adjust: 100%
+    -webkit-overflow-scrolling: touch
+    -webkit-font-smoothing: antialiased
+    -webkit-tap-highlight-color: transparent
+    touch-action: manipulation
+
+body
+    font-family: var(--font-family)
+    font-size: var(--font-size)
+    line-height: normal
+    color: var(--color-black)
+
+span, a, em, del, strong, label, cite, small, time, mark, code
+    display: inline-block
+
+p
+    white-space: normal
+    word-break: break-word
+
+fieldset, img
+    border: none
+
+img
+    display: block
+    max-width: 100%
+
+li
+    list-style: none
+
+a
+    font-size: inherit
+    color: inherit
+    -webkit-touch-callout: none
+    text-decoration: none
+
+a, div, section, img, button, input
+    -webkit-tap-highlight-color: transparent
+
+a, button
+    touch-action: manipulation
+    user-select: none
+
+mark
+    background: none
+    color: var(--color-theme)
+
+hr
+    width: 52%
+    margin: 5em auto
+    border: none
+    border-top: var(--border-1px-width) solid #ebebeb
+
+pre
+    white-space: pre-wrap
+    word-wrap: break-word
+
+blockquote
+    padding: var(--margin-padding-lg) var(--margin-padding-md)
+    font-size: var(--font-size-md)
+
+button
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    height: var(--height-md)
+    padding: 0 var(--margin-padding-md)
+    cursor: pointer
+    transition: .3s
+    white-space: nowrap
+
+button, input, textarea, select, [contenteditable=true]
+    padding: 0 var(--margin-padding-md)
+    background: white
+    border: var(--border-1px-width) solid var(--color-border)
+    font-family: inherit
+    font-size: inherit
+    outline: none
+
+button, input, select
+    height: var(--height-md)
+
+textarea, [contenteditable=true]
+    min-height: var(--height-md)
+
+input
+    &:-webkit-autofill
+        box-shadow: 0 0 0 10000px white inset
+
+    &:focus
+        -webkit-tap-highlight-color: transparent
+
+    &[type=radio], &[type=checkbox]
+        min-height: auto
+
+    &[type=color]
+        padding: 0
+
+    &::-webkit-input-placeholder
+        color: var(--color-gray-light)
+
+textarea
+    resize: none
