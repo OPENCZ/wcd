@@ -9,7 +9,7 @@ class SwitchComponent extends CreateHTMLElement {
      * @returns {string[]}      需要被监听的属性名
      */
     static get observedAttributes() {
-        return ['checked'];
+        return ['checked', 'size'];
     }
 
     /**
@@ -70,7 +70,9 @@ class SwitchComponent extends CreateHTMLElement {
      */
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
-            this.dispatch('change');
+            name === 'checked'
+                ? this.dispatch('change', this.CustomEventResultParams())
+                : $(this.shadowRoot).find('.reset-style').html(this.resetStyle());
         }
     }
 
@@ -89,8 +91,6 @@ class SwitchComponent extends CreateHTMLElement {
             if (this.disabled) return;
 
             this.checked = !this.checked;
-
-            this.dispatch('change', this.CustomEventResultParams());
         });
     }
 
@@ -107,30 +107,10 @@ class SwitchComponent extends CreateHTMLElement {
     }
 
     /**
-     * 设置尺寸样式
-     */
-    setSizeStyle() {
-        let size = Number($(this).attr('size')) || 48,
-            width = Math.round(size * 1.6);
-
-        $(this.shadowRoot)
-            .find('.switch-component')
-            .css({
-                width: pxToVw(width),
-                height: pxToVw(size),
-                borderRadius: pxToVw(size / 2),
-            })
-            .find({});
-    }
-
-    /**
      * 渲染
      * @returns {string}    返回html字符串
      */
     render() {
-        let size = Number($(this).attr('size')) || 48,
-            width = Math.round(size * 1.6);
-
         return `
             <style>
                 :host {
@@ -143,20 +123,15 @@ class SwitchComponent extends CreateHTMLElement {
                     align-items: center;
                     cursor: pointer;
                     user-select: none;
-                    width: ${pxToVw(width)};
-                    height: ${pxToVw(size)};
                     padding: 0;
                     background: #FDFDFD;
-                    border-radius: ${pxToVw(size / 2)};
                     box-sizing: border-box;
-                    border: ${pxToVw(2)} solid var(--color-border);
+                    border: var(--border-1px-width) solid var(--color-border);
                     transition: background-color 0.1s,border 0.1s;
                     overflow: hidden;
                 }
                 
                 .switch-component .switch-icon {
-                    width: ${pxToVw(size - 4)};
-                    height: ${pxToVw(size - 4)};
                     border-radius: 19px;
                     background: white;
                     box-shadow: 0 1px 3px rgba(0,0,0,0.4);
@@ -166,10 +141,6 @@ class SwitchComponent extends CreateHTMLElement {
                 :host([checked=true]) .switch-component {
                     background: var(--color-theme);
                     border-color: var(--color-theme);
-                }
-                
-                :host([checked=true]) .switch-component .switch-icon {
-                    transform: translateX(${pxToVw(width - size)});
                 }
                 
                 :host([disabled=true]) .switch-component {
@@ -184,10 +155,37 @@ class SwitchComponent extends CreateHTMLElement {
                 }
             </style>
             
+            <style class="reset-style">${this.resetStyle()}</style>
+            
             <label class="switch-component">
                 <i class="switch-icon"></i>
             </label>
         `;
+    }
+
+    /**
+     * 重置样式
+     * @return {string}     重置后的样式
+     */
+    resetStyle() {
+        let size = Number($(this).attr('size')) || 48,
+            width = Math.round(size * 1.6);
+
+        return `
+            .switch-component {
+                width: ${pxToVw(width)};
+                height: ${pxToVw(size)};
+                border-radius: ${pxToVw(size / 2)};
+            }
+            .switch-component .switch-icon {
+                width: ${pxToVw(size - 4)};
+                height: ${pxToVw(size - 4)};
+            }
+                
+            :host([checked=true]) .switch-component .switch-icon {
+                transform: translateX(${pxToVw(width - size)});
+            }
+        `
     }
 }
 
