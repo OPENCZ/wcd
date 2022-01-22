@@ -1,0 +1,12 @@
+// 创建浮动样式类
+=float
+    @each $item in (right, left)
+        .float-#{$item}
+            float: #{$item}
+
+    .clear-both
+        zoom: 1
+        &:after
+            content: ''
+            display: block
+            clear: both
