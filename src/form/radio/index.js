@@ -100,7 +100,7 @@ class RadioComponent extends CreateHTMLElement {
                 $(`${config.prefix}-radio[name="${name}"][checked="true"]`).each(item => {
                     if (item.disabled) return;
 
-                    this == item && item.checked ? isSelf = true : item.checked = false;
+                    this == item && item.checked ? (isSelf = true) : (item.checked = false);
                 });
             }
 
@@ -219,7 +219,7 @@ class RadioComponent extends CreateHTMLElement {
                 width: ${size};
                 height: ${size};
             }
-        `
+        `;
     }
 }
 

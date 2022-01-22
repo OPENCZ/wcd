@@ -185,7 +185,7 @@ class SwitchComponent extends CreateHTMLElement {
             :host([checked=true]) .switch-component .switch-icon {
                 transform: translateX(${pxToVw(width - size)});
             }
-        `
+        `;
     }
 }
 

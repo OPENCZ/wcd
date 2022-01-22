@@ -231,7 +231,7 @@ class CheckboxComponent extends CreateHTMLElement {
                 width: ${pxToVw(size)};
                 height: ${pxToVw(size)};
             }
-        `
+        `;
     }
 }
 
