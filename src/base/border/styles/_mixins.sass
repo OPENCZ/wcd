@@ -1,0 +1,32 @@
+// 1px边框
+=border
+    .border
+        +create-border("", var(--color-border))
+
+    .border-light
+        +create-border
+
+    .border-none
+        border: none
+
+    @each $value in (top, right, bottom, left)
+        .border-#{$value}
+            +create-border($value, var(--color-border))
+
+        .border-#{$value}-light
+            +create-border($value)
+
+=create-border($direction: "", $border-color: var(--color-border-light))
+    @if ($direction != "")
+        border-#{$direction}: var(--border-1px-width) solid $border-color
+
+    @else
+        border: var(--border-1px-width) solid $border-color
+
+// 圆角边框
+$border-radius-data: (oval: 100000px, round: 50%, radius: var(--border-radius))
+=border-radius
+    @each $key, $value in $border-radius-data
+        .border-#{$key}
+            overflow: hidden
+            border-radius: $value
