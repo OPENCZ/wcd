@@ -9,5 +9,7 @@
     - [Margin/Padding 内/外边距](/base/margin-padding.md)
     - [Table 表格](/base/table.md)
     - [Text 文本](/base/text.md)
+  - 反馈
+    - [Spin 加载中](/feedback/spin.md)
   - 导航
     - [Breadcrumb 面包屑](/navigation/breadcrumb.md)
