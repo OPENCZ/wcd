@@ -21,8 +21,7 @@ class RadioComponent extends CreateHTMLElement {
     }
 
     /**
-     *
-     * 获取选中状态
+     * 设置是否选中
      * @param bool          是否选中
      */
     set checked(bool) {
@@ -38,8 +37,7 @@ class RadioComponent extends CreateHTMLElement {
     }
 
     /**
-     *
-     * 获取禁用状态
+     * 设置禁用状态
      * @param bool          是否禁用
      */
     set disabled(bool) {
@@ -48,7 +46,7 @@ class RadioComponent extends CreateHTMLElement {
 
     /**
      * 获取[value]属性值
-     * @return {boolean}    [value]属性值
+     * @return {string}    属性值
      */
     get value() {
         return $(this).attr('value') || '';
@@ -56,7 +54,7 @@ class RadioComponent extends CreateHTMLElement {
 
     /**
      * 设置[value]属性值
-     * @param val           [value]属性值
+     * @param val           属性值
      */
     set value(val) {
         val !== '' ? $(this).attr('value', val) : '';
@@ -69,7 +67,7 @@ class RadioComponent extends CreateHTMLElement {
      * @param newValue      新的属性值
      */
     attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue != newValue) {
+        if (oldValue !== newValue) {
             name === 'checked'
                 ? this.dispatch('change', this.CustomEventResultParams())
                 : $(this.shadowRoot).find('.reset-style').html(this.resetStyle());
@@ -133,22 +131,22 @@ class RadioComponent extends CreateHTMLElement {
                     display: inline-flex;
                 }
                 
-                .radio-component {
+                .radio-wrapper {
                     display: inline-flex;
                     align-items: center;
                     cursor: pointer;
                     user-select: none;
                 }
                 
-                .radio-component .radio-label {
+                .radio-wrapper .radio-label {
                     margin-left: ${pxToVw(10)};
                 }
                 
-                .radio-component .radio-label:empty {
+                .radio-wrapper .radio-label:empty {
                     margin-left: 0;
                 }
                 
-                .radio-component .radio-icon {
+                .radio-wrapper .radio-icon {
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -157,7 +155,7 @@ class RadioComponent extends CreateHTMLElement {
                     transition: .3s;
                 }
                 
-                .radio-component .radio-icon span {
+                .radio-wrapper .radio-icon span {
                     display: block;
                     width: 100%;
                     height: 100%;
@@ -166,36 +164,36 @@ class RadioComponent extends CreateHTMLElement {
                     transition: inherit;
                 }
                 
-                :host([checked=true]) .radio-component .radio-icon {
+                :host([checked=true]) .radio-wrapper .radio-icon {
                     border-color: var(--color-theme)
                 }
                 
-                :host([checked=true]) .radio-component .radio-icon span {
+                :host([checked=true]) .radio-wrapper .radio-icon span {
                     background: var(--color-theme);
                     transform: scale(.5);
                 }
                 
-                :host([disabled=true]) .radio-component {
+                :host([disabled=true]) .radio-wrapper {
                     cursor: not-allowed;
                 }
                 
-                :host([disabled=true]) .radio-component .radio-icon {
+                :host([disabled=true]) .radio-wrapper .radio-icon {
                     border-color: var(--color-disabled);
                     background: var(--color-disabled-bg);
                 }
                 
-                :host([disabled=true][checked=true]) .radio-component .radio-icon span {
+                :host([disabled=true][checked=true]) .radio-wrapper .radio-icon span {
                     background: var(--color-disabled);
                 }
                 
-                :host([disabled=true]) .radio-component .radio-label {
+                :host([disabled=true]) .radio-wrapper .radio-label {
                     color: var(--color-disabled);
                 }
             </style>
             
             <style class="reset-style">${this.resetStyle()}</style>
             
-            <div class="radio-component">
+            <div class="radio-wrapper">
                 <div class="radio-icon">
                     <span></span>
                 </div>
@@ -215,7 +213,7 @@ class RadioComponent extends CreateHTMLElement {
         size = pxToVw(size - 2);
 
         return `
-            .radio-component .radio-icon {
+            .radio-wrapper .radio-icon {
                 width: ${size};
                 height: ${size};
             }

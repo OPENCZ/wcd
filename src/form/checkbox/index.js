@@ -48,7 +48,7 @@ class CheckboxComponent extends CreateHTMLElement {
 
     /**
      * 获取[value]属性值
-     * @return {boolean}    [value]属性值
+     * @return {string}    属性值
      */
     get value() {
         return $(this).attr('value') || '';
@@ -56,7 +56,7 @@ class CheckboxComponent extends CreateHTMLElement {
 
     /**
      * 设置[value]属性值
-     * @param val           [value]属性值
+     * @param val           属性值
      */
     set value(val) {
         val !== '' ? $(this).attr('value', val) : '';
@@ -69,7 +69,7 @@ class CheckboxComponent extends CreateHTMLElement {
      * @param newValue      新的属性值
      */
     attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue != newValue) {
+        if (oldValue !== newValue) {
             name === 'checked'
                 ? this.dispatch('change', this.CustomEventResultParams())
                 : $(this.shadowRoot).find('.reset-style').html(this.resetStyle());

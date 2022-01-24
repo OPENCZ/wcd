@@ -21,8 +21,7 @@ class SwitchComponent extends CreateHTMLElement {
     }
 
     /**
-     *
-     * 获取选中状态
+     * 设置选中状态
      * @param bool          是否选中
      */
     set checked(bool) {
@@ -38,8 +37,7 @@ class SwitchComponent extends CreateHTMLElement {
     }
 
     /**
-     *
-     * 获取禁用状态
+     * 设置禁用状态
      * @param bool          是否禁用
      */
     set disabled(bool) {
@@ -48,7 +46,7 @@ class SwitchComponent extends CreateHTMLElement {
 
     /**
      * 获取[value]属性值
-     * @return {boolean}    [value]属性值
+     * @return {string}    属性值
      */
     get value() {
         return $(this).attr('value') || '';
@@ -56,7 +54,7 @@ class SwitchComponent extends CreateHTMLElement {
 
     /**
      * 设置[value]属性值
-     * @param val           [value]属性值
+     * @param val          属性值
      */
     set value(val) {
         val !== '' ? $(this).attr('checked', val) : '';
@@ -69,7 +67,7 @@ class SwitchComponent extends CreateHTMLElement {
      * @param newValue      新的属性值
      */
     attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue != newValue) {
+        if (oldValue !== newValue) {
             name === 'checked'
                 ? this.dispatch('change', this.CustomEventResultParams())
                 : $(this.shadowRoot).find('.reset-style').html(this.resetStyle());
@@ -117,7 +115,7 @@ class SwitchComponent extends CreateHTMLElement {
                     display: inline-flex;
                 }
                 
-                .switch-component {
+                .switch-wrapper {
                     position: relative;
                     display: inline-flex;
                     align-items: center;
@@ -131,24 +129,24 @@ class SwitchComponent extends CreateHTMLElement {
                     overflow: hidden;
                 }
                 
-                .switch-component .switch-icon {
+                .switch-wrapper .switch-icon {
                     border-radius: 19px;
                     background: white;
                     box-shadow: 0 1px 3px rgba(0,0,0,0.4);
                     transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
                 }
                 
-                :host([checked=true]) .switch-component {
+                :host([checked=true]) .switch-wrapper {
                     background: var(--color-theme);
                     border-color: var(--color-theme);
                 }
                 
-                :host([disabled=true]) .switch-component {
+                :host([disabled=true]) .switch-wrapper {
                     cursor: not-allowed;
                     background: var(--color-disabled);
                 }
                 
-                :host([disabled=true][checked=true]) .switch-component {
+                :host([disabled=true][checked=true]) .switch-wrapper {
                     cursor: not-allowed;
                     background: var(--color-disabled);
                     border-color: var(--color-disabled);
@@ -157,7 +155,7 @@ class SwitchComponent extends CreateHTMLElement {
             
             <style class="reset-style">${this.resetStyle()}</style>
             
-            <label class="switch-component">
+            <label class="switch-wrapper">
                 <i class="switch-icon"></i>
             </label>
         `;
@@ -172,17 +170,17 @@ class SwitchComponent extends CreateHTMLElement {
             width = Math.round(size * 1.6);
 
         return `
-            .switch-component {
+            .switch-wrapper {
                 width: ${pxToVw(width)};
                 height: ${pxToVw(size)};
                 border-radius: ${pxToVw(size / 2)};
             }
-            .switch-component .switch-icon {
+            .switch-wrapper .switch-icon {
                 width: ${pxToVw(size - 4)};
                 height: ${pxToVw(size - 4)};
             }
                 
-            :host([checked=true]) .switch-component .switch-icon {
+            :host([checked=true]) .switch-wrapper .switch-icon {
                 transform: translateX(${pxToVw(width - size)});
             }
         `;
