@@ -105,28 +105,28 @@
 
 ### 横轴对齐（水平对齐）
 
-| 样式类                           | 描述                                   |
-| -------------------------------- | -------------------------------------- |
-| `.justify-content-flex-start`    | 子项横轴起点对齐（水平左对齐）样式类   |
-| `.justify-content-center`        | 子项横轴中心对齐（水平居中对齐）样式类 |
-| `.justify-content-flex-end`      | 子项横轴终点对齐（水平右对齐）样式类   |
+| 样式类 | 描述 |
+| --- | --- |
+| `.justify-content-flex-start` | 子项横轴起点对齐（水平左对齐）样式类 |
+| `.justify-content-center` | 子项横轴中心对齐（水平居中对齐）样式类 |
+| `.justify-content-flex-end` | 子项横轴终点对齐（水平右对齐）样式类 |
 | `.justify-content-space-between` | 子项横轴两端对齐（水平两端对齐）样式类 |
-| `.justify-content-space-around`  | 子项横轴分散对齐（水平分散对齐）样式类 |
+| `.justify-content-space-around` | 子项横轴分散对齐（水平分散对齐）样式类 |
 
 ### 横轴对齐（水平对齐）
 
-| 样式类                         | 描述                                     |
-| ------------------------------ | ---------------------------------------- |
-| `.align-content-flex-start`    | 多子项竖轴起点对齐（垂直顶部对齐）样式类 |
-| `.align-content-center`        | 多子项竖轴中心对齐（垂直居中对齐）样式类 |
-| `.align-content-flex-end`      | 多子项竖轴终点对齐（垂直底部对齐）样式类 |
+| 样式类 | 描述 |
+| --- | --- |
+| `.align-content-flex-start` | 多子项竖轴起点对齐（垂直顶部对齐）样式类 |
+| `.align-content-center` | 多子项竖轴中心对齐（垂直居中对齐）样式类 |
+| `.align-content-flex-end` | 多子项竖轴终点对齐（垂直底部对齐）样式类 |
 | `.align-content-space-between` | 多子项竖轴两端对齐（垂直两端对齐）样式类 |
 | `.align-content-space-around ` | 多子项竖轴分散对齐（垂直分散对齐）样式类 |
 
 ### 单子项竖轴对齐（垂直对齐）
 
-| 样式类                    | 描述                                   |
-| ------------------------- | -------------------------------------- |
+| 样式类 | 描述 |
+| --- | --- |
 | `.align-items-flex-start` | 子项竖轴起点对齐（垂直顶部对齐）样式类 |
-| `.align-items-center`     | 子项竖轴中心对齐（垂直居中对齐）样式类 |
-| `.align-items-flex-end`   | 子项竖轴终点对齐（垂直底部对齐）样式类 |
+| `.align-items-center` | 子项竖轴中心对齐（垂直居中对齐）样式类 |
+| `.align-items-flex-end` | 子项竖轴终点对齐（垂直底部对齐）样式类 |

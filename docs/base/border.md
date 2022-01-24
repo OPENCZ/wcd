@@ -95,39 +95,39 @@
 ## 样式类
 ### 1px边框
 
-| 样式类           | 描述                |
-| ---------------- | ------------------- |
-| `.border`        | `1px`边框样式类     |
-| `.border-top`    | `1px`顶部边框样式类 |
-| `.border-right`  | `1px`右边边框样式类 |
+| 样式类 | 描述 |
+| --- | --- |
+| `.border` | `1px`边框样式类 |
+| `.border-top` | `1px`顶部边框样式类 |
+| `.border-right` | `1px`右边边框样式类 |
 | `.border-bottom` | `1px`底部边框样式类 |
-| `.border-left`   | `1px`左边边框样式类 |
+| `.border-left` | `1px`左边边框样式类 |
 
 ### 1px浅色边框
 
-| 样式类                 | 描述                |
-| ---------------------- | ------------------- |
-| `.border-light`        | `1px`边框样式类     |
-| `.border-top-light`    | `1px`顶部边框样式类 |
-| `.border--light`       | `1px`右边边框样式类 |
+| 样式类 | 描述 |
+| --- | --- |
+| `.border-light` | `1px`边框样式类 |
+| `.border-top-light` | `1px`顶部边框样式类 |
+| `.border--light` | `1px`右边边框样式类 |
 | `.border-bottom-light` | `1px`底部边框样式类 |
-| `.border-left-light`   | `1px`左边边框样式类 |
+| `.border-left-light` | `1px`左边边框样式类 |
 
 ### 圆角
 
-| 样式类           | 描述           |
-| ---------------- | -------------- |
+| 样式类 | 描述 |
+| --- | --- |
 | `.border-radius` | 圆角边框样式类 |
-| `.border-oval`   | 椭圆边框样式类 |
-| `.border-round`  | 圆形边框样式类 |
+| `.border-oval` | 椭圆边框样式类 |
+| `.border-round` | 圆形边框样式类 |
 
 ## CSS变量
 
-| 变量名                    | 描述                      |
-|------------------------| ------------------------- |
-| `--border-1px-width`   | `1px`边框宽度变量设置     |
-| `--color-border`       | `1px`边框颜色变量设置     |
+| 样式类 | 描述 |
+| --- | --- |
+| `--border-1px-width` | `1px`边框宽度变量设置 |
+| `--color-border` | `1px`边框颜色变量设置 |
 | `--color-border-light` | `1px`浅色边框颜色变量设置 |
-| `--border-radius`      | 圆角边框变量设置          |
+| `--border-radius` | 圆角边框变量设置 |
 
 [CSS变量使用与注意事项](/css-variable)

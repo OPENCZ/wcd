@@ -134,15 +134,15 @@ wc-breadcrumb.color {
 
 ## 属性
 
-| 属性值      | 描述                                                                                     |
-| ----------- | ---------------------------------------------------------------------------------------- |
+| 属性值 | 描述 |
+| --- | --- |
 | `separator` | 在`<wc-breadcrumb/>`元素上定义的属性值，设置`<wc-breadcrumb-item/>`之间的分隔符，默认`/` |
 
 ## CSS变量
 
-| 变量名               | 描述                                    |
-| -------------------- | --------------------------------------- |
-| `--color-black`      | `<wc-breadcrumb-item/>`最后一级颜色变量 |
-| `--color-gray-light` | `<wc-breadcrumb-item/>`默认颜色变量     |
+| 变量名 | 描述 |
+| --- | --- |
+| `--color-black` | `<wc-breadcrumb-item/>`最后一级颜色变量 |
+| `--color-gray-light` | `<wc-breadcrumb-item/>`默认颜色变量 |
 
 使用方法可参考[自定义颜色示例](/navigation/breadcrumb?id=自定义颜色)，或[CSS变量使用与注意事项](/css-variable)

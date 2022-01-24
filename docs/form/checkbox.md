@@ -154,13 +154,13 @@ wc-checkbox[name="checkbox-item-5"] {
 
 ## 属性
 
-| 属性名     | 描述                                          | 默认值  | DOM 操作 | 属性监听回调 |
-| ---------- | --------------------------------------------- | ------- | -------- | ------------ |
-| `size`     | 定义该组件的尺寸，该值为数字类型              | `48`    | -        | -            |
-| `name`     | 定义该组件的名称                              | -       | -        | -            |
-| `value`    | 定义该组件的值                                | -       | `true`   | -            |
-| `checked`  | 定义该组件是否选中状态；可接收`true`、`false` | `false` | `true`   | `true`       |
-| `disabled` | 定义该组件是否禁用状态；可接收`true`、`false` | `false` | `true`   | -            |
+| 属性名 | 描述 | 默认值  | DOM 操作 | 属性监听回调 |
+| --- | --- | --- | --- | --- |
+| `size` | 定义该组件的尺寸，该值为数字类型 | `32` | - | - |
+| `name` | 定义该组件的名称 | - | - | - |
+| `value` | 定义该组件的值 | - | `true` | - |
+| `checked` | 定义该组件是否选中状态；可接收`true`、`false` | `false` | `true` | `true` |
+| `disabled` | 定义该组件是否禁用状态；可接收`true`、`false` | `false` | `true` | - |
 
 ### DOM 操作
 
@@ -198,11 +198,11 @@ document.querySelector("wc-checkbox").addEventListener("change", function (e) {
 
 ## CSS变量
 
-| 变量名                | 描述                                    |
-| --------------------- | --------------------------------------- |
-| `--color-border`      | 默认边框颜色样式                        |
-| `--color-theme`       | 组件`[checked=true]`时边框与小圆点样式  |
-| `--color-disabled`    | 组件`[disabled=true]`时边框与小圆点样式 |
-| `--color-disabled-bg` | 组件`[disabled=true]`时背景颜色样式     |
+| 变量名 | 描述 |
+| --- | --- |
+| `--color-border` | 默认边框颜色样式 |
+| `--color-theme` | 组件`[checked=true]`时边框与小圆点样式 |
+| `--color-disabled` | 组件`[disabled=true]`时边框与小圆点样式 |
+| `--color-disabled-bg` | 组件`[disabled=true]`时背景颜色样式 |
 
 使用方法可参考[自定义颜色示例](/form/checkbox?id=自定义颜色)，或[CSS变量使用与注意事项](/css-variable)

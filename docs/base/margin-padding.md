@@ -471,59 +471,59 @@
 
 ### Margin
 
-| 样式类              | 描述                                 |
-| ------------------- | ------------------------------------ |
-| `.margin-lg`        | 大尺寸（`15px`）外边距样式类         |
-| `.margin-top-lg`    | 距离顶部大尺寸（`15px`）外边距样式类 |
-| `.margin-right-lg`  | 距离右边大尺寸（`15px`）外边距样式类 |
+| 样式类 | 描述 |
+| --- | --- |
+| `.margin-lg` | 大尺寸（`15px`）外边距样式类 |
+| `.margin-top-lg` | 距离顶部大尺寸（`15px`）外边距样式类 |
+| `.margin-right-lg` | 距离右边大尺寸（`15px`）外边距样式类 |
 | `.margin-bottom-lg` | 距离底部大尺寸（`15px`）外边距样式类 |
-| `.margin-left-lg`   | 距离左边大尺寸（`15px`）外边距样式类 |
-| `.margin-md`        | 中尺寸（`10px`）外边距样式类         |
-| `.margin-top-md`    | 距离顶部中尺寸（`10px`）外边距样式类 |
-| `.margin-right-md`  | 距离右边中尺寸（`10px`）外边距样式类 |
+| `.margin-left-lg` | 距离左边大尺寸（`15px`）外边距样式类 |
+| `.margin-md` | 中尺寸（`10px`）外边距样式类 |
+| `.margin-top-md` | 距离顶部中尺寸（`10px`）外边距样式类 |
+| `.margin-right-md` | 距离右边中尺寸（`10px`）外边距样式类 |
 | `.margin-bottom-md` | 距离底部中尺寸（`10px`）外边距样式类 |
-| `.margin-left-md`   | 距离左边中尺寸（`10px`）外边距样式类 |
-| `.margin-sm`        | 小尺寸（`5px`）外边距样式类          |
-| `.margin-top-sm`    | 距离顶部小尺寸（`5px`）外边距样式类  |
-| `.margin-right-sm`  | 距离右边小尺寸（`5px`）外边距样式类  |
-| `.margin-bottom-sm` | 距离底部小尺寸（`5px`）外边距样式类  |
-| `.margin-left-sm`   | 距离左边小尺寸（`5px`）外边距样式类  |
-| `.margin`           | 外边距`0px`样式类                    |
-| `.margin-top`       | 距离顶部`0px`外边距样式类            |
-| `.margin-right`     | 距离右边`0px`外边距样式类            |
-| `.margin-bottom`    | 距离底部`0px`外边距样式类            |
-| `.margin-left`      | 距离左边`0px`外边距样式类            |
-| `.margin-auto`      | 外边距自适应样式类                   |
+| `.margin-left-md` | 距离左边中尺寸（`10px`）外边距样式类 |
+| `.margin-sm` | 小尺寸（`5px`）外边距样式类 |
+| `.margin-top-sm` | 距离顶部小尺寸（`5px`）外边距样式类 |
+| `.margin-right-sm` | 距离右边小尺寸（`5px`）外边距样式类 |
+| `.margin-bottom-sm` | 距离底部小尺寸（`5px`）外边距样式类 |
+| `.margin-left-sm` | 距离左边小尺寸（`5px`）外边距样式类 |
+| `.margin` | 外边距`0px`样式类 |
+| `.margin-top` | 距离顶部`0px`外边距样式类 |
+| `.margin-right` | 距离右边`0px`外边距样式类 |
+| `.margin-bottom` | 距离底部`0px`外边距样式类 |
+| `.margin-left` | 距离左边`0px`外边距样式类 |
+| `.margin-auto` | 外边距自适应样式类 |
 
 ### Padding
 
-| 样式类               | 描述                                 |
-| -------------------- | ------------------------------------ |
-| `.padding-lg`        | 大尺寸（`15px`）内边距样式类         |
-| `.padding-top-lg`    | 距离顶部大尺寸（`15px`）内边距样式类 |
-| `.padding-right-lg`  | 距离右边大尺寸（`15px`）内边距样式类 |
+| 样式类 | 描述 |
+| --- | --- |
+| `.padding-lg` | 大尺寸（`15px`）内边距样式类 |
+| `.padding-top-lg` | 距离顶部大尺寸（`15px`）内边距样式类 |
+| `.padding-right-lg` | 距离右边大尺寸（`15px`）内边距样式类 |
 | `.padding-bottom-lg` | 距离底部大尺寸（`15px`）内边距样式类 |
-| `.padding-left-lg`   | 距离左边大尺寸（`15px`）内边距样式类 |
-| `.padding-md`        | 中尺寸（`10px`）内边距样式类         |
-| `.padding-top-md`    | 距离顶部中尺寸（`10px`）内边距样式类 |
-| `.padding-right-md`  | 距离右边中尺寸（`10px`）内边距样式类 |
+| `.padding-left-lg` | 距离左边大尺寸（`15px`）内边距样式类 |
+| `.padding-md` | 中尺寸（`10px`）内边距样式类 |
+| `.padding-top-md` | 距离顶部中尺寸（`10px`）内边距样式类 |
+| `.padding-right-md` | 距离右边中尺寸（`10px`）内边距样式类 |
 | `.padding-bottom-md` | 距离底部中尺寸（`10px`）内边距样式类 |
-| `.padding-left-md`   | 距离左边中尺寸（`10px`）内边距样式类 |
-| `.padding-sm`        | 小尺寸（`5px`）内边距样式类          |
-| `.padding-top-sm`    | 距离顶部小尺寸（`5px`）内边距样式类  |
-| `.padding-right-sm`  | 距离右边小尺寸（`5px`）内边距样式类  |
-| `.padding-bottom-sm` | 距离底部小尺寸（`5px`）内边距样式类  |
-| `.padding-left-sm`   | 距离左边小尺寸（`5px`）内边距样式类  |
-| `.padding`           | 内边距`0px`样式类                    |
-| `.padding-top`       | 距离顶部`0px`内边距样式类            |
-| `.padding-right`     | 距离右边`0px`内边距样式类            |
-| `.padding-bottom`    | 距离底部`0px`内边距样式类            |
-| `.padding-left`      | 距离左边`0px`内边距样式类            |
+| `.padding-left-md` | 距离左边中尺寸（`10px`）内边距样式类 |
+| `.padding-sm` | 小尺寸（`5px`）内边距样式类 |
+| `.padding-top-sm` | 距离顶部小尺寸（`5px`）内边距样式类 |
+| `.padding-right-sm` | 距离右边小尺寸（`5px`）内边距样式类 |
+| `.padding-bottom-sm` | 距离底部小尺寸（`5px`）内边距样式类 |
+| `.padding-left-sm` | 距离左边小尺寸（`5px`）内边距样式类 |
+| `.padding` | 内边距`0px`样式类 |
+| `.padding-top` | 距离顶部`0px`内边距样式类 |
+| `.padding-right` | 距离右边`0px`内边距样式类 |
+| `.padding-bottom` | 距离底部`0px`内边距样式类 |
+| `.padding-left` | 距离左边`0px`内边距样式类 |
 
 ## CSS变量
 
-| 变量名                   | 描述                   |
-|-----------------------| ---------------------- |
+| 样式类 | 描述 |
+| --- | --- |
 | `--margin-padding-lg` | 大尺寸外内边距变量设置 |
 | `--margin-padding-md` | 中尺寸外内边距变量设置 |
 | `--margin-padding-sm` | 小尺寸外内边距变量设置 |
