@@ -54,7 +54,7 @@ class SpinComponent extends CreateHTMLElement {
         if (oldValue !== newValue) {
             newValue === 'true' ? this.show() : this.hide();
 
-            this.dispatch('change', this.CustomEventResultParams());
+            this.dispatch('change');
         }
     }
 

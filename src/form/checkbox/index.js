@@ -71,7 +71,7 @@ class CheckboxComponent extends CreateHTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue !== newValue) {
             name === 'checked'
-                ? this.dispatch('change', this.CustomEventResultParams())
+                ? this.dispatch('change')
                 : $(this.shadowRoot).find('.reset-style').html(this.resetStyle());
         }
     }

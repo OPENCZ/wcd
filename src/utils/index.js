@@ -88,9 +88,16 @@ export class CreateHTMLElement extends HTMLElement {
 
         this.dispatchEvent(
             new CustomEvent(type, {
-                detail,
+                detail: this.CustomEventResultParams(),
             }),
         );
+    }
+
+    /**
+     * 自定义事件返回数据
+     */
+    CustomEventResultParams(params = {}) {
+        return params;
     }
 
     render() {
@@ -334,7 +341,7 @@ class $$ {
      * 获取索引值
      */
     index() {
-        return this.each(item =>Array.from(item.parentNode.children).indexOf(item));
+        return this.each(item => Array.from(item.parentNode.children).indexOf(item));
     }
 
     /**
