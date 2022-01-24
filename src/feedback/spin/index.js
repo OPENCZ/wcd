@@ -13,35 +13,35 @@ class SpinComponent extends CreateHTMLElement {
     }
 
     /**
-     * 是否加载状态可见的
-     * @return {string}
+     * 获取加载类型
+     * @return {string}     类型
      */
     get type() {
-        return this.getAttribute('type') === 'more' ? 'more' : 'mask';
+        return $(this).attr('type') === 'more' ? 'more' : 'mask';
     }
 
     /**
-     * 是否加载状态可见的
-     * @return {string}
+     * 设置加载类型
+     * @param type          可选值：“mask”、“more”；默认：“more”
      */
     set type(type) {
-        this.setAttribute('type', type === 'more' ? 'more' : 'mask');
+        $(this).attr('type', type === 'more' ? 'more' : 'mask');
     }
 
     /**
-     * 是否加载状态可见的
-     * @return {string}
+     * 获取加载状态
+     * @return {boolean}    布尔值
      */
     get loading() {
-        return this.getAttribute('loading') === 'true';
+        return $(this).attr('loading') === 'true';
     }
 
     /**
-     * 是否加载状态可见的
-     * @return {string}
+     * 设置加载状态
+     * @param bool          布尔值
      */
     set loading(bool) {
-        this.setAttribute('loading', bool === true || bool === 'true');
+        $(this).attr('loading', bool === true || bool === 'true');
     }
 
     /**
@@ -51,7 +51,7 @@ class SpinComponent extends CreateHTMLElement {
      * @param newValue      新的属性值
      */
     attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue != newValue) {
+        if (oldValue !== newValue) {
             newValue === 'true' ? this.show() : this.hide();
 
             this.dispatch('change', this.CustomEventResultParams());
