@@ -52,7 +52,7 @@ export class CreateHTMLElement extends HTMLElement {
      * @param newValue      新的属性值
      */
     attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue != newValue) {
+        if (oldValue !== newValue) {
             this.dispatch('change');
         }
     }
@@ -344,8 +344,8 @@ class $$ {
      * @param styleName     样式名，当只有该参数时，将返回该样式值
      * @param styleValue    样式值
      */
-    css(styleName, styleValue = undefined) {
-        if (typeof styleName === 'string' && typeof styleValue === 'undefined') {
+    css(styleName, styleValue = "") {
+        if (styleName === '') {
             return this.getStyle(styleName);
         }
 
@@ -358,7 +358,7 @@ class $$ {
         this.each(node => {
             if (!node) return;
 
-            if (styleName.constructor.name == 'Object') {
+            if (styleName.constructor.name.toLocaleLowerCase() === 'object') {
                 this.each(styleName, (key, val) => setStyle(node, key, val));
             } else if (styleName && styleValue) {
                 setStyle(node, styleName, styleValue);
@@ -477,8 +477,8 @@ class $$ {
      * @param attrValue             将要赋值的属性值
      * @return {undefined|*|[]|$}  attrValue参数不存在时,返回attrName属性值
      */
-    attr(attrName, attrValue) {
-        if (typeof attrValue === 'undefined') {
+    attr(attrName, attrValue = "") {
+        if (attrValue === "") {
             let result = [];
 
             this.each(node => result.push(node.getAttribute(attrName)));
@@ -509,8 +509,8 @@ class $$ {
      * @param value              将要赋值的属性值
      * @return {undefined|*|[]|$}  attrValue参数不存在时,返回attrName属性值
      */
-    val(value) {
-        if (typeof value === 'undefined') {
+    val(value = "") {
+        if (value === "") {
             let result = this.each(node => {
                 return node.value;
             });
@@ -527,7 +527,7 @@ class $$ {
      * @param html          将要填充的html字符串
      * @return {*|[]|$}    html参数不存在时,将返回内联html参数字符串
      */
-    html(html) {
+    html(html = "") {
         return this.htmlOrTextHandler('innerHTML', html);
     }
 
@@ -536,7 +536,7 @@ class $$ {
      * @param text          将要填充的text字符串
      * @return {*|[]|$}    text参数不存在时,将返回内联text参数字符串
      */
-    text(text) {
+    text(text = "") {
         return this.htmlOrTextHandler('innerText', text);
     }
 
@@ -547,7 +547,7 @@ class $$ {
      * @return {undefined|*|[]|$}  设置值或获取值
      */
     htmlOrTextHandler(key, value) {
-        if (typeof value === 'undefined') {
+        if (value === "") {
             let result = [];
 
             this.each(node => {
@@ -612,7 +612,7 @@ class $$ {
             }
         }
 
-        return result;
+        return result.length === 1 ? result[0] : result;
     }
 }
 
