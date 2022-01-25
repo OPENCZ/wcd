@@ -12,12 +12,14 @@ module.exports = {
         document: true,
         getComputedStyle: true,
     },
+    parser: "@babel/eslint-parser",
     parserOptions: {
         ecmaVersion: 11,
         sourceType: 'module',
     },
     rules: {
         'no-console': 0,
+        'no-unused-vars': 0,
         'no-multiple-empty-lines': [1, {max: 2}],
     },
 };

@@ -3,6 +3,7 @@ import watch from 'rollup-plugin-watch';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
 import sass from 'rollup-plugin-sass';
 import eslint from '@rollup/plugin-eslint';
+import { babel } from '@rollup/plugin-babel';
 import inputConfig from './input-config';
 import fs from 'fs';
 
@@ -21,6 +22,7 @@ const config = {
         },
     ],
     plugins: [
+        babel({ babelHelpers: 'bundled' }),
         eslint(),
         sass({
             output(styles) {
