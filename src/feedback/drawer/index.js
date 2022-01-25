@@ -14,33 +14,35 @@ class DrawerComponent extends CreateHTMLElement {
     }
 
     /**
-     * 是否可见的
-     * @return {boolean}
+     * 获取是否可见
+     * @return {boolean}    ture || false
      */
     get visible() {
         return $(this).attr('visible') === 'true';
     }
 
     /**
-     * 是否可见的
+     * 设置是否可见的
+     * @param bool          true || false
      */
     set visible(bool) {
-        $(this).attr('visible', (bool === 'true' || bool === true).toString());
+        $(this).attr('visible', bool === 'true' || bool === true);
     }
 
     /**
-     * 对齐方式
-     * @return {string}
+     * 获取对齐方式
+     * @return {string}     top || right || bottom || left || center
      */
     get align() {
         return $(this).attr('align') || 'center';
     }
 
     /**
-     * 是否可见的
+     * 设置对齐方式
+     * @param align         top || right || bottom || left || center
      */
-    set align(str) {
-        $(this).attr('align', str);
+    set align(align) {
+        align ? $(this).attr('align', align) : "";
     }
 
     /**
