@@ -89,7 +89,7 @@ export class Toast {
         document.body.appendChild(drawerComponent);
 
         // 延时隐藏
-        setTimeout(() => drawerComponent.visible = false, delay || 2500);
+        setTimeout(() => (drawerComponent.visible = false), delay || 2500);
 
         // 绑定事件
         this.bind(drawerComponent, afterClose);
@@ -102,7 +102,7 @@ export class Toast {
      */
     bind(el, afterClose) {
         $(el).on('afterClose', () => {
-            afterClose()
+            afterClose();
             $(el).remove();
         });
     }
