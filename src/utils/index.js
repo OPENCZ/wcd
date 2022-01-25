@@ -15,9 +15,7 @@ export function setConfig(newConfig) {
  * 创建自定义元素
  */
 export function customElementsDefine(constructor) {
-    let name = constructor.name
-        .replace(/Component/, '')
-        .replace(/[A-Z]/g, word => `-${word.toLocaleLowerCase()}`);
+    let name = constructor.name.replace(/Component/, '').replace(/[A-Z]/g, word => `-${word.toLocaleLowerCase()}`);
 
     name = `${config.prefix || 'wc'}${name}`;
 
