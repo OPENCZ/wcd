@@ -42,7 +42,7 @@ class DrawerComponent extends CreateHTMLElement {
      * @param align         top || right || bottom || left || center
      */
     set align(align) {
-        align ? $(this).attr('align', align) : "";
+        align ? $(this).attr('align', align) : '';
     }
 
     /**
