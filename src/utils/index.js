@@ -81,9 +81,8 @@ export class CreateHTMLElement extends HTMLElement {
     /**
      * 派发事件
      * @param type      事件类型
-     * @param detail    数据详情
      */
-    dispatch(type, detail = {}) {
+    dispatch(type) {
         if (!type) return;
 
         this.dispatchEvent(
