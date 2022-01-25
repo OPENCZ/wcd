@@ -48,6 +48,7 @@
     </table>
 </wc-spin>
 </output>
+
 <script>
     document.querySelectorAll("wc-switch").forEach(item => {
         item.addEventListener("change", function (ev) {
@@ -353,7 +354,7 @@
 
 定义`[slot="mask"]`属性的插槽元素
 
-<output>
+<output data-lang="示例">
 <div class="align-items-center justify-content-flex-end">
     <span>隐藏</span>
     <wc-switch
@@ -408,7 +409,7 @@
 
 定义`[slot="more"]`属性的插槽元素
 
-<output>
+<output data-lang="示例">
 <div class="align-items-center justify-content-flex-end">
     <span>隐藏</span>
     <wc-switch
