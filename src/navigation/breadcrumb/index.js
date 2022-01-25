@@ -1,9 +1,10 @@
-import {$, createCustomElement, pxToVw, CreateHTMLElement, config} from '../../utils';
+import {$, pxToVw, CreateHTMLElement, config, customElementsDefine} from '../../utils';
 import './item';
 
 /**
  * 面包屑组件
  */
+@customElementsDefine
 class BreadcrumbComponent extends CreateHTMLElement {
     /**
      * 渲染
@@ -40,5 +41,3 @@ class BreadcrumbComponent extends CreateHTMLElement {
         `;
     }
 }
-
-createCustomElement(BreadcrumbComponent);
