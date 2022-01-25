@@ -1,8 +1,9 @@
-import {$, pxToVw, createCustomElement, CreateHTMLElement} from '../../utils';
+import {$, pxToVw, CreateHTMLElement, customElementsDefine} from '../../utils';
 
 /**
  * 抽屉
  */
+@customElementsDefine
 class DrawerComponent extends CreateHTMLElement {
     /**
      * 监听属性
@@ -92,13 +93,15 @@ class DrawerComponent extends CreateHTMLElement {
         if (!(offset > 0) || !['top', 'right', 'bottom', 'left'].includes(this.align)) return;
 
         if (offset) {
-            $(this.shadowRoot).find('.drawer-wrapper').css({
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0,
-                [this.align]: pxToVw(offset),
-            })
+            $(this.shadowRoot)
+                .find('.drawer-wrapper')
+                .css({
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0,
+                    [this.align]: pxToVw(offset),
+                });
         }
     }
 
@@ -123,9 +126,7 @@ class DrawerComponent extends CreateHTMLElement {
         $(this.shadowRoot)
             .find('.drawer-wrapper')
             .on('click', ev => {
-                $(this).attr('mask-closable') !== 'false' && $(ev.target).hasClass('drawer-wrapper')
-                    ? this.hide()
-                    : '';
+                $(this).attr('mask-closable') !== 'false' && $(ev.target).hasClass('drawer-wrapper') ? this.hide() : '';
             });
     }
 
@@ -248,5 +249,3 @@ class DrawerComponent extends CreateHTMLElement {
         `;
     }
 }
-
-createCustomElement(DrawerComponent);

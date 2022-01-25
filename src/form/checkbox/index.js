@@ -1,8 +1,9 @@
-import {$, pxToVw, createCustomElement, CreateHTMLElement, config} from '../../utils';
+import {$, pxToVw, CreateHTMLElement, config, customElementsDefine} from '../../utils';
 
 /**
  * 复选框组件
  */
+@customElementsDefine
 class CheckboxComponent extends CreateHTMLElement {
     /**
      * 监听属性
@@ -234,5 +235,3 @@ class CheckboxComponent extends CreateHTMLElement {
         `;
     }
 }
-
-createCustomElement(CheckboxComponent);

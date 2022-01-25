@@ -1,8 +1,9 @@
-import {$, pxToVw, createCustomElement, CreateHTMLElement, loadingIconSvg} from '../../utils';
+import {$, pxToVw, CreateHTMLElement, loadingIconSvg, customElementsDefine} from '../../utils';
 
 /**
  * 加载组件
  */
+@customElementsDefine
 class SpinComponent extends CreateHTMLElement {
     /**
      * 监听属性
@@ -246,5 +247,3 @@ class SpinComponent extends CreateHTMLElement {
         `;
     }
 }
-
-createCustomElement(SpinComponent);

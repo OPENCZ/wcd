@@ -4,9 +4,6 @@ export let config = {
     prefix: 'wc',
 };
 
-// 自定义组件前缀
-export const CUSTOM_COMPONENT_PREFIX = 'wc';
-
 export function setConfig(newConfig) {
     config = {
         ...config,
@@ -17,10 +14,12 @@ export function setConfig(newConfig) {
 /**
  * 创建自定义元素
  */
-export function createCustomElement(constructor) {
-    let name = constructor.name.replace(/Component/, '').toLocaleLowerCase();
+export function customElementsDefine(constructor) {
+    let name = constructor.name
+        .replace(/Component/, '')
+        .replace(/[A-Z]/g, word => `-${word.toLocaleLowerCase()}`);
 
-    name = `${config.prefix || 'wc'}-${name}`;
+    name = `${config.prefix || 'wc'}${name}`;
 
     !customElements.get(name) ? customElements.define(name, constructor) : '';
 }

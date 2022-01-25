@@ -1,8 +1,9 @@
-import {$, pxToVw, createCustomElement, CreateHTMLElement} from '../../utils';
+import {$, pxToVw, CreateHTMLElement, customElementsDefine} from '../../utils';
 
 /**
  * 开关组件
  */
+@customElementsDefine
 class SwitchComponent extends CreateHTMLElement {
     /**
      * 监听属性
@@ -186,5 +187,3 @@ class SwitchComponent extends CreateHTMLElement {
         `;
     }
 }
-
-createCustomElement(SwitchComponent);

@@ -1,8 +1,9 @@
-import {pxToVw, $, createCustomElement, CreateHTMLElement, config} from '../../utils';
+import {pxToVw, $, CreateHTMLElement, config, customElementsDefine} from '../../utils';
 
 /**
  * 单选框组件
  */
+@customElementsDefine
 class RadioComponent extends CreateHTMLElement {
     /**
      * 监听属性
@@ -220,5 +221,3 @@ class RadioComponent extends CreateHTMLElement {
         `;
     }
 }
-
-createCustomElement(RadioComponent);
