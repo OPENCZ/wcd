@@ -40,8 +40,6 @@
         new Dialog({
             title: "title",
             content: "content",
-            borderRadius: 24,
-            maskClosable: true,
             buttons: ["取消", "确认"],
             onClick(index, close) {
                 close();
@@ -99,7 +97,7 @@
 new Dialog({
     title: "title",
     content: "content",
-    borderRadius: 24,
+    borderRadius: `var(--border-radius)`,
     maskClosable: true,
     buttons: ["取消", "确认"],
     onClick(index, close) {
@@ -114,7 +112,7 @@ new Dialog({
 | --- | --- | --- | --- | --- |
 | `visible` | 定义该组件是否可见，接收`true`或`false` | `false` | `true` | - |
 | `mask-closable` | 定义该组件是否可通过点击遮罩层隐藏，接收`true`或`false` | `true` | - | - |
-| `border-radius` | 定义该组件圆角样式 | `24` | - | - |
+| `border-radius` | 定义该组件圆角样式 | `var(--border-radius)` | - | - |
 
 ### DOM 操作
 
@@ -142,7 +140,7 @@ console.log(wcDialogElement.visible);   // 获取该组件是否可见
 | --- | --- | --- | --- |
 | `options.title` | 对话框标题 | - | `String` |
 | `options.content` | 对话框内容 | - | `String` |
-| `options.borderRadius` | 对话框圆角样式 | - | `Number` |
+| `options.borderRadius` | 对话框圆角样式 | `var(--border-radius)` | `Number` |
 | `options.maskClosable` | 遮罩层是否可点击关闭 | `true` | `Boolean` |
 | `options.buttons` | 自定义操作按钮文案 | 我知道了 | `Array` |
 | `options.onClick` | 当操作按钮点击时回调；接口两个参数，参数一：操作按钮索引值，参数二：关闭对话框方法 | - | `Function` |
