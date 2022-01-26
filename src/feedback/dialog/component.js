@@ -73,8 +73,6 @@ class DialogComponent extends CreateHTMLElement {
      * @returns {string}    返回html字符串
      */
     render() {
-        let borderRadius = $(this).attr('border-radius') || 24;
-
         return `
             <${config.prefix}-drawer 
                 visible="${$(this).attr('visible') || false}"
@@ -88,11 +86,11 @@ class DialogComponent extends CreateHTMLElement {
                     
                     .dialog-component {
                         overflow: hidden;
-                        width: 520px;
+                        width: 400px;
                         max-width: 85vw;
                         padding-top: ${pxToVw(40)};
                         background: white;
-                        border-radius: ${pxToVw(borderRadius || 24)};
+                        border-radius: ${$(this).attr('border-radius') || `var(--border-radius)`};
                     }
                     
                     ::slotted([slot=header]) {
