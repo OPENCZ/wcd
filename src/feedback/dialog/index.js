@@ -22,7 +22,7 @@ export class Dialog {
                 id="${this.id}" 
                 visible="true"
                 mask-closable="${options.maskClosable || true}"
-                border-radius="${options.borderRadius || 24}"
+                border-radius="${options.borderRadius}"
             >
                 ${options.title ? `<div slot="header">${options.title}</div>` : ``}
                 ${options.content ? `<div slot="body">${options.content}</div>` : ``}
