@@ -564,6 +564,47 @@ class $$ {
     }
 
     /**
+     * 追加元素
+     * @param DOMString     DOM字符串
+     */
+    append(DOMString) {
+        this.insertAdjacentHTML('beforeend', DOMString);
+
+        return this;
+    }
+
+    /**
+     * 在某个元素前插入新元素
+     * @param DOMString     DOM字符串
+     */
+    before(DOMString) {
+        this.insertAdjacentHTML('beforebegin', DOMString);
+
+        return this;
+    }
+
+    /**
+     * 在某个元素后插入新元素
+     * @param DOMString     DOM字符串
+     */
+    after(DOMString) {
+        this.insertAdjacentHTML('afterend', DOMString);
+
+        return this;
+    }
+
+    /**
+     * 插入html
+     * @param position      插入位置
+     * @param DOMString     DOM字符串
+     */
+    insertAdjacentHTML(position, DOMString) {
+        this.each(node => node.insertAdjacentHTML(position, DOMString));
+
+        return this;
+    }
+
+    /**
      * 删除DOM操作
      */
     remove() {
