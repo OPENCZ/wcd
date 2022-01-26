@@ -14,7 +14,7 @@
 ## 示例
 
 <output data-lang="示例">
-    <button onclick="halfScreenDialogVisible(true)" class="btn-half-screen-dialog">点击显示半屏对话框</button>
+    <button class="btn-half-screen-dialog">点击显示半屏对话框</button>
     <wc-half-screen-dialog border-radius="24">
         <div slot="header">Title</div>
         <div slot="body">
