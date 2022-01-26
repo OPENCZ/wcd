@@ -3,14 +3,17 @@
 - **组件**
   - 样式类
     - [Border 边框](/base/border.md)
-    - [Display 显示](/base/display.md)
     - [Flexbox 弹性盒模型](/base/flexbox.md)
     - [Float 浮动](/base/float.md)
     - [Margin/Padding 内/外边距](/base/margin-padding.md)
     - [Table 表格](/base/table.md)
     - [Text 文本](/base/text.md)
   - 反馈
+    - [Dialog 对话框](/feedback/dialog.md)
+    - [Drawer 抽屉](/feedback/drawer.md)
+    - [HalfScreenDialog 半屏对话框](/feedback/half-screen-dialog.md)
     - [Spin 加载中](/feedback/spin.md)
+    - [Toast 轻提示](/feedback/toast.md)
   - 表单
     - [Button 按钮](/form/button.md)
     - [Checkbox 复选框](/form/checkbox.md)
