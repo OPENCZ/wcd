@@ -9,7 +9,7 @@ import fs from 'fs';
 
 const config = {
     input: {
-        wcui: 'src/index.js',
+        wcdesign: 'src/index.js',
         ...inputConfig,
     },
     output: [
@@ -31,7 +31,7 @@ const config = {
                         fs.mkdirSync('../dist');
                     }
 
-                    fs.writeFileSync(`dist/wcui.css`, styles);
+                    fs.writeFileSync(`dist/wcdesign.css`, styles);
                 });
             },
         }),
