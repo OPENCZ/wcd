@@ -8,6 +8,8 @@
     - [Margin/Padding 内/外边距](/base/margin-padding.md)
     - [Table 表格](/base/table.md)
     - [Text 文本](/base/text.md)
+  - 数据
+    - [Carousel 走马灯](/data/carousel.md)
   - 反馈
     - [Dialog 对话框](/feedback/dialog.md)
     - [Drawer 抽屉](/feedback/drawer.md)
