@@ -247,8 +247,8 @@ class $$ {
      * @param i             DOM数组指定下标
      * @returns {*[]|*}     返回DOM数组或单个DOM
      */
-    get(i = "") {
-        if (i !== "" && this.selector.length) {
+    get(i = '') {
+        if (i !== '' && this.selector.length) {
             i %= this.selector.length;
 
             if (i < 0) {
@@ -266,8 +266,8 @@ class $$ {
      * @param i             DOM数组指定下标
      * @returns {*[]|*}     返回DOM数组或单个DOM
      */
-    eq(i = "") {
-        if (i !== "" && this.selector.length) {
+    eq(i = '') {
+        if (i !== '' && this.selector.length) {
             i %= this.selector.length;
 
             if (i < 0) {
@@ -302,7 +302,7 @@ class $$ {
 
         this.each(node => {
             while (node) {
-                if (node.nodeType >= 9 || node.parentNode.tagName.toLocaleLowerCase() === 'body') break;
+                if (node.nodeType >= 9 || node.parentNode?.tagName?.toLocaleLowerCase() === 'body') break;
 
                 for (let i = 0; i < args.length; i++) {
                     if (
@@ -346,7 +346,7 @@ class $$ {
      * @param styleValue    样式值
      */
     css(styleName, styleValue = '') {
-        if (styleName === '') {
+        if (styleValue === '') {
             return this.getStyle(styleName);
         }
 
