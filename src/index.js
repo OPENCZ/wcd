@@ -18,6 +18,8 @@ import './feedback/spin';
 
 export {Toast} from './feedback/toast';
 
+import './layout/grid';
+
 import './navigation/breadcrumb';
 
 export {setConfig} from './utils/index';
