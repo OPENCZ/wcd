@@ -2,6 +2,14 @@ export let config = {
     isPXToVW: false,
     designWidth: 750,
     prefix: 'wc',
+    grid: {
+        xs: 0,
+        sm: 768,
+        md: 992,
+        lg: 1200,
+        xl: 1920,
+        col: 24,
+    },
 };
 
 export function setConfig(newConfig) {
