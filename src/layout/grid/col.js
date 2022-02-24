@@ -108,8 +108,8 @@ class ColComponent extends CreateHTMLElement {
         let result = ``;
 
         Object.keys(config.grid).forEach(key => {
-            if (key === "col") return;
-            
+            if (key === 'col') return;
+
             let span = spanObject[key];
 
             if (typeof spanObject[key] != 'undefined') {
@@ -118,8 +118,8 @@ class ColComponent extends CreateHTMLElement {
                 let style = span?.includes('flex')
                     ? `flex: 1;`
                     : !isNaN(parseInt(span))
-                        ? `width: ${(parseInt(span) / config.grid.col) * 100}%;`
-                        : ``;
+                    ? `width: ${(parseInt(span) / config.grid.col) * 100}%;`
+                    : ``;
 
                 let setWidth = () => `
                     :host {
