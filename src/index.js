@@ -22,4 +22,6 @@ import './layout/grid';
 
 import './navigation/breadcrumb';
 
+import './navigation/menu';
+
 export {setConfig} from './utils/index';
