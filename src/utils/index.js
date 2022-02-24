@@ -349,6 +349,16 @@ class $$ {
     }
 
     /**
+     * 获取索引值
+     */
+    children() {
+        this.selector = this.each(item => Array.from(item.children));
+        this.length = this.selector.length;
+
+        return this;
+    }
+
+    /**
      * 设置或获取样式
      * @param styleName     样式名，当只有该参数时，将返回该样式值
      * @param styleValue    样式值
@@ -369,7 +379,7 @@ class $$ {
 
             if (styleName.constructor.name.toLocaleLowerCase() === 'object') {
                 this.each(styleName, (key, val) => setStyle(node, key, val));
-            } else if (styleName && styleValue) {
+            } else if (styleName && styleValue !== '') {
                 setStyle(node, styleName, styleValue);
             }
         });
