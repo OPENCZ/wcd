@@ -25,3 +25,4 @@
     - [Switch 开关](/form/switch.md)
   - 导航
     - [Breadcrumb 面包屑](/navigation/breadcrumb.md)
+    - [Menu 侧边栏菜单](/navigation/menu.md)
