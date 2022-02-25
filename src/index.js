@@ -2,6 +2,8 @@ import './base/index.sass';
 
 import './data/carousel';
 
+import './form/button';
+
 import './form/checkbox';
 
 import './form/switch';
