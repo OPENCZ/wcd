@@ -364,7 +364,7 @@ class $$ {
      * @param styleValue    样式值
      */
     css(styleName, styleValue = '') {
-        if (styleValue === '') {
+        if (styleValue === '' && typeof styleName !== 'object') {
             return this.getStyle(styleName);
         }
 
