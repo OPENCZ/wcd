@@ -157,14 +157,15 @@ class ButtonComponent extends CreateHTMLElement {
                 
                 :host([loading=true]) .loading-box {
                     display: flex;
-                    background: rgba(255, 255, 255, .8);
+                    background: var(--button-loading-mask);
                     backdrop-filter: blur(1px);
                 }
                 
                 .loading-box svg {
+                    width: var(--button-loading-size);
+                    height: var(--button-loading-size);
+                    fill: var(--color-theme);
                     animation: rotating 2s linear infinite;
-                    width: 16px;
-                    height: 16px;
                 }
                 
                 @keyframes rotating {
