@@ -6,6 +6,8 @@ import './form/button';
 
 import './form/checkbox';
 
+import './form/input';
+
 import './form/switch';
 
 import './form/radio';
