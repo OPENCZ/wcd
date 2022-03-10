@@ -496,8 +496,8 @@ class $$ {
      * @param attrValue             将要赋值的属性值
      * @return {undefined|*|[]|$}  attrValue参数不存在时,返回attrName属性值
      */
-    attr(attrName, attrValue = '') {
-        if (attrValue === '') {
+    attr(attrName, attrValue = undefined) {
+        if (typeof attrValue === 'undefined') {
             let result = [];
 
             this.each(node => result.push(node.getAttribute(attrName)));
@@ -528,8 +528,8 @@ class $$ {
      * @param value              将要赋值的属性值
      * @return {undefined|*|[]|$}  attrValue参数不存在时,返回attrName属性值
      */
-    val(value = '') {
-        if (value === '') {
+    val(value = undefined) {
+        if (typeof value === 'undefined') {
             let result = this.each(node => {
                 return node.value;
             });
