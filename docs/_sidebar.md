@@ -21,6 +21,7 @@
   - 表单
     - [Button 按钮](/form/button.md)
     - [Checkbox 复选框](/form/checkbox.md)
+    - [Input 输入框](/form/input.md)
     - [Radio 单选框](/form/radio.md)
     - [Switch 开关](/form/switch.md)
   - 导航
