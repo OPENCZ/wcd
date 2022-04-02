@@ -1,5 +1,7 @@
 import './base/index.sass';
 
+import './data/badge';
+
 import './data/carousel';
 
 import './form/button';
@@ -17,6 +19,8 @@ export {Dialog} from './feedback/dialog';
 import './feedback/drawer';
 
 import './feedback/half-screen-dialog';
+
+import './feedback/popover';
 
 import './feedback/spin';
 
