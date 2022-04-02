@@ -17,6 +17,7 @@
     - [Dialog 对话框](/feedback/dialog.md)
     - [Drawer 抽屉](/feedback/drawer.md)
     - [HalfScreenDialog 半屏对话框](/feedback/half-screen-dialog.md)
+    - [popover 气泡卡片](/feedback/popover.md)
     - [Spin 加载中](/feedback/spin.md)
     - [Toast 轻提示](/feedback/toast.md)
   - 表单
