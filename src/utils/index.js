@@ -650,7 +650,7 @@ class $$ {
         let result = [];
 
         function handler(self, item, index) {
-            let currentResult = callback?.call(data[item], item, index);
+            let currentResult = callback?.call(item, item, index);
 
             if (currentResult === false || !data) return 'break';
 
