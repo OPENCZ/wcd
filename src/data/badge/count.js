@@ -28,9 +28,7 @@ class BadgeCountComponent extends CreateHTMLElement {
         if (name === 'value') {
             $(badgeCount).find('span').text(newValue);
 
-            newValue.length > 2
-                ? $(badgeCount).addClass('multi')
-                : $(badgeCount).removeClass('multi');
+            newValue.length > 2 ? $(badgeCount).addClass('multi') : $(badgeCount).removeClass('multi');
         }
 
         // 背景色
