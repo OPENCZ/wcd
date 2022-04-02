@@ -11,6 +11,7 @@
   - 布局
     - [Grid 网格](/layout/grid.md)
   - 数据
+    - [Badge 微标数](/data/badge.md)
     - [Carousel 走马灯](/data/carousel.md)
   - 反馈
     - [Dialog 对话框](/feedback/dialog.md)
