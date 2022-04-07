@@ -1,33 +1,34 @@
-import {$, pxToVw, config} from '../../utils';
+import { $, pxToVw, config } from '../../utils';
 import './../drawer';
 
 /**
  * 弹出式提示
  */
 export class Toast {
-    /**
-     * 构造器
-     * @param options       配置参数，可接受对象或非字符串
-     * @param afterClose    在提示框关闭后，该参数仅在简阶版生效
-     */
-    constructor(options, afterClose) {
-        let newOptions = typeof options !== 'object' ? {content: options, afterClose} : options;
+	/**
+	 * 构造器
+	 * @param options       配置参数，可接受对象或非字符串
+	 * @param afterClose    在提示框关闭后，该参数仅在简阶版生效
+	 */
+	constructor(options, afterClose) {
+		let newOptions =
+			typeof options !== 'object' ? { content: options, afterClose } : options;
 
-        this.render(newOptions);
-    }
+		this.render(newOptions);
+	}
 
-    /**
-     * 渲染
-     * @param options   配线参数
-     */
-    render(options) {
-        let {icon, align, delay, content, borderRadius, afterClose} = options;
+	/**
+	 * 渲染
+	 * @param options   配线参数
+	 */
+	render(options) {
+		let { icon, align, delay, content, borderRadius, afterClose } = options;
 
-        let div = document.createElement('div'),
-            drawerComponent,
-            id = `Toast-${new Date().getTime()}`;
+		let div = document.createElement('div'),
+			drawerComponent,
+			id = `Toast-${new Date().getTime()}`;
 
-        div.innerHTML = `
+		div.innerHTML = `
             <${config.prefix}-drawer 
                 visible="true"
                 mask-closable="false"
@@ -85,25 +86,25 @@ export class Toast {
             </${config.prefix}-drawer>
         `;
 
-        drawerComponent = div.children[0];
-        document.body.appendChild(drawerComponent);
+		drawerComponent = div.children[0];
+		document.body.appendChild(drawerComponent);
 
-        // 延时隐藏
-        setTimeout(() => (drawerComponent.visible = false), delay || 2500);
+		// 延时隐藏
+		setTimeout(() => (drawerComponent.visible = false), delay || 2500);
 
-        // 绑定事件
-        this.bind(drawerComponent, afterClose);
-    }
+		// 绑定事件
+		this.bind(drawerComponent, afterClose);
+	}
 
-    /**
-     * 绑定事件
-     * @param el            <wc-drawer/>元素
-     * @param afterClose    组件属性改变时回调事件类型
-     */
-    bind(el, afterClose) {
-        $(el).on('afterClose', () => {
-            afterClose();
-            $(el).remove();
-        });
-    }
+	/**
+	 * 绑定事件
+	 * @param el            <wc-drawer/>元素
+	 * @param afterClose    组件属性改变时回调事件类型
+	 */
+	bind(el, afterClose) {
+		$(el).on('afterClose', () => {
+			afterClose();
+			$(el).remove();
+		});
+	}
 }

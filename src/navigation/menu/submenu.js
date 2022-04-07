@@ -1,99 +1,107 @@
-import {$, config, CreateHTMLElement, customElementsDefine, pxToVw} from '../../utils';
+import {
+	$,
+	config,
+	CreateHTMLElement,
+	customElementsDefine,
+	pxToVw,
+} from '../../utils';
 
 /**
  * 侧边栏子项
  */
 @customElementsDefine
 class Submenu extends CreateHTMLElement {
-    /**
-     * 监听属性
-     * @returns {string[]}      需要被监听的属性名
-     */
-    static get observedAttributes() {
-        return ['open'];
-    }
+	/**
+	 * 监听属性
+	 * @returns {string[]}      需要被监听的属性名
+	 */
+	static get observedAttributes() {
+		return ['open'];
+	}
 
-    /**
-     * 设置是否打开状态
-     * @param bool          布尔值
-     */
-    set open(bool) {
-        $(this).attr('open', bool === 'true' || bool === true);
-    }
+	/**
+	 * 设置是否打开状态
+	 * @param bool          布尔值
+	 */
+	set open(bool) {
+		$(this).attr('open', bool === 'true' || bool === true);
+	}
 
-    /**
-     * 获取是否打开状态
-     * @returns {boolean}   布尔值
-     */
-    get open() {
-        return $(this).attr('open') === 'true';
-    }
+	/**
+	 * 获取是否打开状态
+	 * @returns {boolean}   布尔值
+	 */
+	get open() {
+		return $(this).attr('open') === 'true';
+	}
 
-    /**
-     * 当自定义元素的指定属性被增加、移除或更改时被调用
-     * @param name          属性名
-     * @param oldValue      更改前的属性值
-     * @param newValue      新的属性值
-     */
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue === newValue) return;
+	/**
+	 * 当自定义元素的指定属性被增加、移除或更改时被调用
+	 * @param name          属性名
+	 * @param oldValue      更改前的属性值
+	 * @param newValue      新的属性值
+	 */
+	attributeChangedCallback(name, oldValue, newValue) {
+		if (oldValue === newValue) return;
 
-        newValue === 'true' ? this.show() : this.hide();
-    }
+		newValue === 'true' ? this.show() : this.hide();
+	}
 
-    /**
-     * 当自定义元素第一次被连接到文档DOM时被调用
-     */
-    connectedCallback() {
-        let sub = $(this.shadowRoot).find('.sub-box');
+	/**
+	 * 当自定义元素第一次被连接到文档DOM时被调用
+	 */
+	connectedCallback() {
+		let sub = $(this.shadowRoot).find('.sub-box');
 
-        $(this.shadowRoot)
-            .find('.title-box')
-            .on('click', () => {
-                let h = $(sub).removeClass('transition').children().offset().height;
+		$(this.shadowRoot)
+			.find('.title-box')
+			.on('click', () => {
+				let h = $(sub).removeClass('transition').children().offset().height;
 
-                if (this.open) {
-                    $(sub).css('height', h);
-                }
+				if (this.open) {
+					$(sub).css('height', h);
+				}
 
-                setTimeout(() => {
-                    this.open = !this.open;
+				setTimeout(() => {
+					this.open = !this.open;
 
-                    $(sub)
-                        .addClass('transition')
-                        .css('height', this.open ? h : 0);
-                }, 50);
+					$(sub)
+						.addClass('transition')
+						.css('height', this.open ? h : 0);
+				}, 50);
 
-                setTimeout(() => {
-                    this.open
-                        ? $(sub).css('height', '100%')
-                        : $(this).find(`${config.prefix}-submenu[open=true]`).attr('open', 'false');
-                }, 300);
-            });
-    }
+				setTimeout(() => {
+					this.open
+						? $(sub).css('height', '100%')
+						: $(this)
+								.find(`${config.prefix}-submenu[open=true]`)
+								.attr('open', 'false');
+				}, 300);
+			});
+	}
 
-    show() {
-        let sub = $(this.shadowRoot).find('.sub-box');
-        let h = $(sub).removeClass('transition').children().offset().height;
+	show() {
+		let sub = $(this.shadowRoot).find('.sub-box');
+		let h = $(sub).removeClass('transition').children().offset().height;
 
-        setTimeout(() => {
-            $(sub).addClass('transition').css('height', h);
-        }, 50);
-        setTimeout(() => {
-            $(sub).css('height', '100%');
-        }, 300);
-    }
+		setTimeout(() => {
+			$(sub).addClass('transition').css('height', h);
+		}, 50);
+		setTimeout(() => {
+			$(sub).css('height', '100%');
+		}, 300);
+	}
 
-    hide() {
-        $(this.shadowRoot).find('.sub-box').css('height', 0);
-    }
+	hide() {
+		$(this.shadowRoot).find('.sub-box').css('height', 0);
+	}
 
-    /**
-     * 渲染
-     * @returns {string}    返回html字符串
-     */
-    render() {
-        return `
+	/**
+	 * 渲染
+	 * @returns {string}    返回html字符串
+	 */
+	render() {
+		return `
             <style>
                 :host {
                     display: block;
@@ -160,5 +168,5 @@ class Submenu extends CreateHTMLElement {
                 </div>
             </div>
         `;
-    }
+	}
 }

@@ -9,7 +9,7 @@ import {
  * 复选框组件
  */
 @customElementsDefine
-class ButtonComponent extends CreateHTMLElement {
+class SelectComponent extends CreateHTMLElement {
 	/**
 	 * 监听属性
 	 * @returns {string[]}      需要被监听的属性名
@@ -102,7 +102,7 @@ class ButtonComponent extends CreateHTMLElement {
 			};
 		}
 
-		$(this.shadowRoot).find('.button-wrapper').css(css);
+		$(this.shadowRoot).find('.Select-wrapper').css(css);
 	}
 
 	/**
@@ -132,7 +132,7 @@ class ButtonComponent extends CreateHTMLElement {
                     opacity: 1;
                 }
                 
-                .button-wrapper {
+                .Select-wrapper {
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -141,16 +141,16 @@ class ButtonComponent extends CreateHTMLElement {
                     border: var(--border-1px-width) solid var(--color-border);
                 }
                 
-                :host([ghost=true]) .button-wrapper {
+                :host([ghost=true]) .Select-wrapper {
                     background: transparent;
                 }
                 
-                :host([size=lg]) .button-wrapper {
+                :host([size=lg]) .Select-wrapper {
                     height: var(--height-lg);
                     font-size: var(--font-size-sm);
                 }
                 
-                :host([size=sm]) .button-wrapper {
+                :host([size=sm]) .Select-wrapper {
                     height: var(--height-sm);
                     font-size: var(--font-size-xs);
                     padding: 0 var(--margin-padding-md);
@@ -170,13 +170,13 @@ class ButtonComponent extends CreateHTMLElement {
                 
                 :host([loading=true]) .loading-box {
                     display: flex;
-                    background: var(--button-loading-mask);
+                    background: var(--Select-loading-mask);
                     backdrop-filter: blur(1px);
                 }
                 
                 .loading-box svg {
-                    width: var(--button-loading-size);
-                    height: var(--button-loading-size);
+                    width: var(--Select-loading-size);
+                    height: var(--Select-loading-size);
                     fill: var(--color-theme);
                     animation: rotating 2s linear infinite;
                 }
@@ -193,7 +193,7 @@ class ButtonComponent extends CreateHTMLElement {
             
             <div class="loading-box">${loadingIconSvg}</div>
 
-            <div class="button-wrapper">
+            <div class="Select-wrapper">
                 <slot></slot>
             </div>
         `;

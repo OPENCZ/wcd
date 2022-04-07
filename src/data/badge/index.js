@@ -1,4 +1,4 @@
-import {config, CreateHTMLElement, customElementsDefine} from '../../utils';
+import { config, CreateHTMLElement, customElementsDefine } from '../../utils';
 import './dot';
 import './count';
 
@@ -7,19 +7,20 @@ import './count';
  */
 @customElementsDefine
 class BadgeComponent extends CreateHTMLElement {
-    /**
-     * 渲染
-     * @returns {string}    返回html字符串
-     */
-    render() {
-        return `
+	/**
+	 * 渲染
+	 * @returns {string}    返回html字符串
+	 */
+	render() {
+		return `
             <style>
                 :host {
                     display: inline-flex;
                     position: relative;
                 }
                 
-                ::slotted(${config.prefix}-badge-dot), ::slotted(${config.prefix}-badge-count) {
+                ::slotted(${config.prefix}-badge-dot), 
+                ::slotted(${config.prefix}-badge-count) {
                     position: absolute;
                     top: 0;
                     right: 0;
@@ -31,5 +32,5 @@ class BadgeComponent extends CreateHTMLElement {
                 <slot></slot>
             </div>
         `;
-    }
+	}
 }

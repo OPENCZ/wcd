@@ -1,4 +1,10 @@
-import {$, pxToVw, customElementsDefine, CreateHTMLElement, config} from '../../utils';
+import {
+	$,
+	pxToVw,
+	customElementsDefine,
+	CreateHTMLElement,
+	config,
+} from '../../utils';
 import './../drawer';
 
 /**
@@ -7,73 +13,75 @@ import './../drawer';
  */
 @customElementsDefine
 class DialogComponent extends CreateHTMLElement {
-    /**
-     * 监听属性
-     * @returns {string[]}      需要被监听的属性名
-     */
-    static get observedAttributes() {
-        return ['visible'];
-    }
+	/**
+	 * 监听属性
+	 * @returns {string[]}      需要被监听的属性名
+	 */
+	static get observedAttributes() {
+		return ['visible'];
+	}
 
-    /**
-     * 获取是否可见
-     * @return {boolean}    ture || false
-     */
-    get visible() {
-        return $(this).attr('visible') === 'true';
-    }
+	/**
+	 * 获取是否可见
+	 * @return {boolean}    ture || false
+	 */
+	get visible() {
+		return $(this).attr('visible') === 'true';
+	}
 
-    /**
-     * 设置是否可见的
-     * @param bool          true || false
-     */
-    set visible(bool) {
-        $(this).attr('visible', bool === 'true' || bool === true);
-    }
+	/**
+	 * 设置是否可见的
+	 * @param bool          true || false
+	 */
+	set visible(bool) {
+		$(this).attr('visible', bool === 'true' || bool === true);
+	}
 
-    /**
-     * 当自定义元素的指定属性被增加、移除或更改时被调用
-     * @param name          属性名
-     * @param oldValue      更改前的属性值
-     * @param newValue      新的属性值
-     */
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue !== newValue) {
-            $(this.shadowRoot).find(`${config.prefix}-drawer`).attr('visible', newValue);
-        }
-    }
+	/**
+	 * 当自定义元素的指定属性被增加、移除或更改时被调用
+	 * @param name          属性名
+	 * @param oldValue      更改前的属性值
+	 * @param newValue      新的属性值
+	 */
+	attributeChangedCallback(name, oldValue, newValue) {
+		if (oldValue !== newValue) {
+			$(this.shadowRoot)
+				.find(`${config.prefix}-drawer`)
+				.attr('visible', newValue);
+		}
+	}
 
-    /**
-     * 当自定义元素第一次被连接到文档DOM时被调用
-     */
-    connectedCallback() {
-        this.onChange();
-    }
+	/**
+	 * 当自定义元素第一次被连接到文档DOM时被调用
+	 */
+	connectedCallback() {
+		this.onChange();
+	}
 
-    /**
-     * 当监听属性改变时
-     */
-    onChange() {
-        $(this.shadowRoot)
-            .find(`${config.prefix}-drawer`)
-            .on('change', ev => (this.visible = ev.detail.visible));
-    }
+	/**
+	 * 当监听属性改变时
+	 */
+	onChange() {
+		$(this.shadowRoot)
+			.find(`${config.prefix}-drawer`)
+			.on('change', ev => (this.visible = ev.detail.visible));
+	}
 
-    /**
-     * 自定义事件返回数据
-     */
-    CustomEventResultParams() {
-        return {
-            visible: this.visible,
-        };
-    }
+	/**
+	 * 自定义事件返回数据
+	 */
+	CustomEventResultParams() {
+		return {
+			visible: this.visible,
+		};
+	}
 
-    /**
-     * 渲染
-     * @returns {string}    返回html字符串
-     */
-    render() {
-        return `
+	/**
+	 * 渲染
+	 * @returns {string}    返回html字符串
+	 */
+	render() {
+		return `
             <${config.prefix}-drawer 
                 visible="${$(this).attr('visible') || false}"
                 mask-closable="${$(this).attr('mask-closable') || true}"
@@ -90,7 +98,10 @@ class DialogComponent extends CreateHTMLElement {
                         max-width: 85vw;
                         padding-top: ${pxToVw(40)};
                         background: white;
-                        border-radius: ${$(this).attr('border-radius') || `var(--border-radius)`};
+                        border-radius: ${
+													$(this).attr('border-radius') ||
+													`var(--border-radius)`
+												};
                     }
                     
                     ::slotted([slot=header]) {
@@ -125,5 +136,5 @@ class DialogComponent extends CreateHTMLElement {
                 </div>
             </${config.prefix}-drawer>
         `;
-    }
+	}
 }

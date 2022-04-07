@@ -1,4 +1,10 @@
-import {$, pxToVw, CreateHTMLElement, config, customElementsDefine} from '../../utils';
+import {
+	$,
+	pxToVw,
+	CreateHTMLElement,
+	config,
+	customElementsDefine,
+} from '../../utils';
 import './item';
 
 /**
@@ -6,12 +12,12 @@ import './item';
  */
 @customElementsDefine
 class BreadcrumbComponent extends CreateHTMLElement {
-    /**
-     * 渲染
-     * @returns {string}    返回html字符串
-     */
-    render() {
-        return `
+	/**
+	 * 渲染
+	 * @returns {string}    返回html字符串
+	 */
+	render() {
+		return `
             <style>
                 :host {
                     display: flex;
@@ -33,11 +39,13 @@ class BreadcrumbComponent extends CreateHTMLElement {
                     margin: ${pxToVw(0, 16)};
                 }
                 
-                ::slotted(${config.prefix}-breadcrumb-item:last-of-type):last-of-type::after {
+                ::slotted(${
+									config.prefix
+								}-breadcrumb-item:last-of-type):last-of-type::after {
                     display: none;
                 }
             </style>
             <slot></slot>
         `;
-    }
+	}
 }

@@ -1,50 +1,57 @@
-import {$, pxToVw, CreateHTMLElement, customElementsDefine} from '../../utils';
+import {
+	$,
+	pxToVw,
+	CreateHTMLElement,
+	customElementsDefine,
+} from '../../utils';
 
 /**
  * 微章组件
  */
 @customElementsDefine
 class BadgeCountComponent extends CreateHTMLElement {
-    /**
-     * 监听属性
-     * @returns {string[]}      需要被监听的属性名
-     */
-    static get observedAttributes() {
-        return ['value', 'color'];
-    }
+	/**
+	 * 监听属性
+	 * @returns {string[]}      需要被监听的属性名
+	 */
+	static get observedAttributes() {
+		return ['value', 'color'];
+	}
 
-    /**
-     * 当自定义元素的指定属性被增加、移除或更改时被调用
-     * @param name          属性名
-     * @param oldValue      更改前的属性值
-     * @param newValue      新的属性值
-     */
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue === newValue) return;
+	/**
+	 * 当自定义元素的指定属性被增加、移除或更改时被调用
+	 * @param name          属性名
+	 * @param oldValue      更改前的属性值
+	 * @param newValue      新的属性值
+	 */
+	attributeChangedCallback(name, oldValue, newValue) {
+		if (oldValue === newValue) return;
 
-        let badgeCount = $(this.shadowRoot).find('.badge-count');
+		let badgeCount = $(this.shadowRoot).find('.badge-count');
 
-        // 计数
-        if (name === 'value') {
-            $(badgeCount).find('span').text(newValue);
+		// 计数
+		if (name === 'value') {
+			$(badgeCount).find('span').text(newValue);
 
-            newValue.length > 2 ? $(badgeCount).addClass('multi') : $(badgeCount).removeClass('multi');
-        }
+			newValue.length > 2
+				? $(badgeCount).addClass('multi')
+				: $(badgeCount).removeClass('multi');
+		}
 
-        // 背景色
-        if (name === 'color') {
-            $(badgeCount).css('background', newValue);
-        }
-    }
+		// 背景色
+		if (name === 'color') {
+			$(badgeCount).css('background', newValue);
+		}
+	}
 
-    /**
-     * 渲染
-     * @returns {string}    返回html字符串
-     */
-    render() {
-        let value = $(this).attr('value');
+	/**
+	 * 渲染
+	 * @returns {string}    返回html字符串
+	 */
+	render() {
+		let value = $(this).attr('value');
 
-        return `
+		return `
             <style>
                 .badge-count {
                     display: flex;
@@ -57,7 +64,9 @@ class BadgeCountComponent extends CreateHTMLElement {
                     font-size: ${pxToVw(24)};
                     white-space: nowrap;
                     text-align: center;
-                    background: ${$(this).attr('color') || `var(--color-badge)`};
+                    background: ${
+											$(this).attr('color') || `var(--color-badge)`
+										};
                     border-radius: ${pxToVw(20)};
                 }
                 
@@ -75,5 +84,5 @@ class BadgeCountComponent extends CreateHTMLElement {
                 <span>${value}</span>
             </div>
         `;
-    }
+	}
 }

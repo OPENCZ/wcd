@@ -1,4 +1,4 @@
-import {CreateHTMLElement, customElementsDefine} from '../../utils';
+import { CreateHTMLElement, customElementsDefine } from '../../utils';
 
 /**
  * 面包屑子项
