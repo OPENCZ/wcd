@@ -8,6 +8,10 @@
 - 单独使用可以表示两种状态之间的切换，和[`Switch`](/form/switch)类似。区别在于切换[`Switch`](/form/switch)会直接触发状态改变，而`checkbox`一般用于状态标记，需要和提交操作配合；
 - 当组件用于全选/反选场景时，可监听`change`事件返回的`ev.detail.isCheckedAll`、`ev.detail.checkedLists`字段，该字段可标识同组组件是否全选与选中列表数据。
 
+## 组件元素
+
+- `<wc-checkbox/>`：复选框组件容器元素，其子级可接收文本。
+
 ## 示例
 
 ### 基础使用
