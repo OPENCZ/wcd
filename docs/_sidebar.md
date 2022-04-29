@@ -25,6 +25,7 @@
     - [Checkbox 复选框](/form/checkbox.md)
     - [Input 输入框](/form/input.md)
     - [Radio 单选框](/form/radio.md)
+    - [Select 选择框](/form/select.md)
     - [Switch 开关](/form/switch.md)
   - 导航
     - [Breadcrumb 面包屑](/navigation/breadcrumb.md)
