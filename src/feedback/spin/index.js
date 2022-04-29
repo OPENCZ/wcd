@@ -2,7 +2,7 @@ import {
 	$,
 	pxToVw,
 	CreateHTMLElement,
-	loadingIconSvg,
+	loadingIcon,
 	customElementsDefine,
 } from '../../utils';
 
@@ -213,11 +213,6 @@ class SpinComponent extends CreateHTMLElement {
                     display: block !important;
                 }
                 
-                .loading-more-wrapper .icon-loading, .loading-mask-wrapper .icon-loading {
-                    line-height: var(--height-md);
-                    animation: rotating 2s linear infinite;
-                }
-                
                 .loading-more-wrapper {
                     transform: scale(0);
                     height: 0;
@@ -237,27 +232,24 @@ class SpinComponent extends CreateHTMLElement {
                     height: 0;
                 }
                 
-                @keyframes rotating {
-                    0% {
-                        transform: rotate(0deg);
-                    }
-                    100% {
-                        transform: rotate(1turn);
-                    }
+                .wc-icon-loading {
+                    line-height: var(--height-md);
                 }
+                
+				${loadingIcon.style}
             </style>
             
             <slot></slot>
             
             <div class="loading-mask-wrapper"> 
                 <slot name="mask"></slot>
-                ${loadingIconSvg}
+                ${loadingIcon.html}
             </div>
             
             <div class="loading-more-wrapper">
                 <div>
                     <slot name="more"></slot>
-                    ${loadingIconSvg}
+                	${loadingIcon.html}
                 </div>
             </div>
         `;

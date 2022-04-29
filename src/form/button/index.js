@@ -2,7 +2,7 @@ import {
 	$,
 	CreateHTMLElement,
 	customElementsDefine,
-	loadingIconSvg,
+	loadingIcon,
 } from '../../utils';
 
 /**
@@ -173,25 +173,11 @@ class ButtonComponent extends CreateHTMLElement {
                     background: var(--button-loading-mask);
                     backdrop-filter: blur(1px);
                 }
-                
-                .loading-box svg {
-                    width: var(--button-loading-size);
-                    height: var(--button-loading-size);
-                    fill: var(--color-theme);
-                    animation: rotating 2s linear infinite;
-                }
-                
-                @keyframes rotating {
-                    0% {
-                        transform: rotate(0deg);
-                    }
-                    100% {
-                        transform: rotate(1turn);
-                    }
-                }
+
+                ${loadingIcon.style}
             </style>
             
-            <div class="loading-box">${loadingIconSvg}</div>
+            <div class="loading-box">${loadingIcon.html}</div>
 
             <div class="button-wrapper">
                 <slot></slot>
