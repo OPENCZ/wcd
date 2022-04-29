@@ -7,7 +7,7 @@ import './../drawer';
 export class Toast {
 	/**
 	 * 构造器
-	 * @param options       配置参数，可接受对象或非字符串
+	 * @param options       配置参数，可接收对象或非字符串
 	 * @param afterClose    在提示框关闭后，该参数仅在简阶版生效
 	 */
 	constructor(options, afterClose) {
