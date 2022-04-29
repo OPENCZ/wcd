@@ -70,6 +70,7 @@ class PopoverComponent extends CreateHTMLElement {
 
 		setTimeout(() => {
 			$(wrapper).addClass('show');
+			this.dispatch('visible');
 		}, 50);
 	}
 
@@ -84,6 +85,7 @@ class PopoverComponent extends CreateHTMLElement {
 
 		setTimeout(() => {
 			$(wrapper).removeClass('visible', 'hide', 'show');
+			this.dispatch('visible');
 		}, 300);
 	}
 
@@ -97,6 +99,8 @@ class PopoverComponent extends CreateHTMLElement {
 				break;
 			case 'hover':
 				this.triggerMouse();
+				break;
+			case 'none':
 				break;
 			default:
 				$(this).attr('trigger', 'click');
@@ -123,7 +127,6 @@ class PopoverComponent extends CreateHTMLElement {
 		$(this)
 			.find(`[slot="placeholder"]`)
 			.on('focus', ev => {
-				ev.stopPropagation();
 				this.show();
 			})
 			.on('blur', () => this.hide());
@@ -392,9 +395,7 @@ class PopoverComponent extends CreateHTMLElement {
                 .popover-box {
                     min-width: ${pxToVw(60)};
                     min-height: ${pxToVw(64)};
-                    border-radius: ${pxToVw(
-											$(this).attr('border-radius') || 0,
-										)};
+                    border-radius: ${pxToVw($(this).attr('border-radius') || 0)};
                     box-shadow: 0 3px 6px -4px rgba(0, 0, 0, .12), 0 6px 16px 0 rgba(0, 0, 0, .08), 0 9px 28px 8px rgba(0, 0, 0, .05);
                     background: ${color};
                 }
@@ -403,19 +404,24 @@ class PopoverComponent extends CreateHTMLElement {
 	}
 }
 
-try {
-	window.onload = function () {
-		$(document).on('click', ev => {
-			let popoverTagName = `${config.prefix}-popover`;
-			let popover = $(ev.target).parents(popoverTagName).get(0);
+window.onload = function () {
+	$(document).on('click', ev => {
+		let popoverTagName = `${config.prefix}-popover`;
+		let popover = $(ev.target).parents(popoverTagName).get(0);
 
-			$(`${popoverTagName}[visible=true][trigger=click]`).each(function () {
-				let trigger = $(this).attr('trigger');
-
-				if (!popover.length || (popover && popover != this)) {
-					this.visible = false;
-				}
-			});
+		$(`${popoverTagName}[visible=true][trigger=click]`).each(function () {
+			if (popover && popover != this) {
+				this.visible = false;
+			}
 		});
-	};
-} catch (e) {}
+
+		let selectTagName = `${config.prefix}-select`;
+		let select = $(ev.target).parents(selectTagName).get(0);
+
+		$(`${selectTagName}[visible=true]`).each(function () {
+			if (select && select != this) {
+				this.visible = false;
+			}
+		});
+	});
+};
