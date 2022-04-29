@@ -3,6 +3,7 @@ import {
 	CreateHTMLElement,
 	customElementsDefine,
 	config,
+	JSONStringFormat
 } from '../../utils';
 
 /**
@@ -79,24 +80,6 @@ class ColComponent extends CreateHTMLElement {
 	}
 
 	/**
-	 * 通过字符串截取操作对象
-	 * @desc 不用eval转换对象是防止xss注入；不用JSON.parse转换对象是有格式要求
-	 */
-	getStringJSON(str) {
-		let res = {};
-
-		str
-			.replace(/\{|\}/g, '')
-			.split(',')
-			.forEach(item => {
-				let arr = item.trim().split(':');
-				typeof config.grid[arr[0]] != 'undefined' ? (res[arr[0]] = arr[1]) : '';
-			});
-
-		return res;
-	}
-
-	/**
 	 * 设置列宽度
 	 */
 	setSpanStyle() {
@@ -104,7 +87,7 @@ class ColComponent extends CreateHTMLElement {
 			spanObject = null;
 
 		if (span?.startsWith('{') && span?.endsWith('}')) {
-			spanObject = this.getStringJSON(span);
+			spanObject = this.JSONStringFormat(span);
 		} else {
 			spanObject = {
 				xs: span,
@@ -162,7 +145,7 @@ class ColComponent extends CreateHTMLElement {
 			offsetObject = null;
 
 		if (offset?.startsWith('{') && offset?.endsWith('}')) {
-			offsetObject = this.getStringJSON(offset);
+			offsetObject = this.JSONStringFormat(offset);
 		}
 
 		if (parseInt(offset) > 0) {
