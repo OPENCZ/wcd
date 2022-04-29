@@ -92,7 +92,6 @@ class InputComponent extends CreateHTMLElement {
 				break;
 			case 'show-clear':
 				let inputWrapper = $(this.shadowRoot).find('.input-wrapper');
-				console.log(newValue === 'true', inputWrapper);
 				newValue === 'true'
 					? $(inputWrapper).addClass('clear')
 					: $(inputWrapper).removeClass('clear');
