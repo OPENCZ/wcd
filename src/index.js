@@ -10,6 +10,8 @@ import './form/checkbox';
 
 import './form/input';
 
+import './form/select';
+
 import './form/switch';
 
 import './form/radio';
