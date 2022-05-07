@@ -88,13 +88,14 @@ export class CreateHTMLElement extends HTMLElement {
 	/**
 	 * 派发事件
 	 * @param type      事件类型
+	 * @param params    事件返回参数
 	 */
-	dispatch(type) {
+	dispatch(type, params = {}) {
 		if (!type) return;
 
 		this.dispatchEvent(
 			new CustomEvent(type, {
-				detail: this.CustomEventResultParams(),
+				detail: this.CustomEventResultParams(params),
 			}),
 		);
 	}
