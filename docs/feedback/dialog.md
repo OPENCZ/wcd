@@ -2,7 +2,7 @@
 
 模态对话框。
 
-基于 [Drawer](/feedback/drawer) 组件封装。
+基于 [Popup](/feedback/popup) 组件封装。
 
 ## 何时使用
 

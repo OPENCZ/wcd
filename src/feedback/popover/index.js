@@ -7,8 +7,7 @@ import {
 } from '../../utils';
 
 /**
- * 抽屉
- * @docs    请查阅README.md文档
+ * 弹出框
  */
 @customElementsDefine
 class PopoverComponent extends CreateHTMLElement {

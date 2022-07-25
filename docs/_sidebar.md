@@ -10,12 +10,13 @@
     - [Text 文本](/base/text.md)
   - 布局
     - [Grid 网格](/layout/grid.md)
+    - [Layout 布局](/layout/layout.md)
   - 数据
     - [Badge 微标数](/data/badge.md)
     - [Carousel 走马灯](/data/carousel.md)
   - 反馈
     - [Dialog 对话框](/feedback/dialog.md)
-    - [Drawer 抽屉](/feedback/drawer.md)
+    - [Popup 弹出窗](/feedback/popup.md)
     - [HalfScreenDialog 半屏对话框](/feedback/half-screen-dialog.md)
     - [Popover 弹出框](/feedback/popover.md)
     - [Spin 加载中](/feedback/spin.md)
@@ -30,3 +31,5 @@
   - 导航
     - [Breadcrumb 面包屑](/navigation/breadcrumb.md)
     - [Menu 侧边栏菜单](/navigation/menu.md)
+  - IM
+    - [Chat 聊天](/chat/chatroom.md)
