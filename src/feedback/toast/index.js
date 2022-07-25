@@ -1,5 +1,5 @@
 import { $, pxToVw, config } from '../../utils';
-import './../drawer';
+import '../popup';
 
 /**
  * 弹出式提示
@@ -25,11 +25,11 @@ export class Toast {
 		let { icon, align, delay, content, borderRadius, afterClose } = options;
 
 		let div = document.createElement('div'),
-			drawerComponent,
+			popupComponent,
 			id = `Toast-${new Date().getTime()}`;
 
 		div.innerHTML = `
-            <${config.prefix}-drawer 
+            <${config.prefix}-popup 
                 visible="true"
                 mask-closable="false"
                 align="${align || 'center'}"
@@ -39,7 +39,7 @@ export class Toast {
                     #${id} {
                         --color-mask-black: transparent;
                     }
-                    ${config.prefix}-drawer .toast-component {
+                    ${config.prefix}-popup .toast-component {
                         max-height: 98vh;
                         color: white;
                         margin: ${pxToVw(20)};
@@ -53,14 +53,14 @@ export class Toast {
                         word-break: break-word;
                     }
                     
-                    ${config.prefix}-drawer .toast-component.has-icon {
+                    ${config.prefix}-popup .toast-component.has-icon {
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         padding: ${pxToVw(10, 20)};
                     }
                     
-                    ${config.prefix}-drawer .toast-component .toast-icon {
+                    ${config.prefix}-popup .toast-component .toast-icon {
                         display: flex;
                         align-items: center;
                         justify-content: center;
@@ -69,7 +69,7 @@ export class Toast {
                         margin-top: ${pxToVw(20)};
                     }
                     
-                    ${config.prefix}-drawer .toast-component .toast-content {
+                    ${config.prefix}-popup .toast-component .toast-content {
                         min-width: ${pxToVw(180)};
                         padding: ${pxToVw(20)} 0;
                         font-size: ${pxToVw(28)};
@@ -83,22 +83,22 @@ export class Toast {
                         <div class="toast-content ">${content}</div>
                     </div>
                 </div>
-            </${config.prefix}-drawer>
+            </${config.prefix}-popup>
         `;
 
-		drawerComponent = div.children[0];
-		document.body.appendChild(drawerComponent);
+		popupComponent = div.children[0];
+		document.body.appendChild(popupComponent);
 
 		// 延时隐藏
-		setTimeout(() => (drawerComponent.visible = false), delay || 2500);
+		setTimeout(() => (popupComponent.visible = false), delay || 2500);
 
 		// 绑定事件
-		this.bind(drawerComponent, afterClose);
+		this.bind(popupComponent, afterClose);
 	}
 
 	/**
 	 * 绑定事件
-	 * @param el            <wc-drawer/>元素
+	 * @param el            <wc-popup/>元素
 	 * @param afterClose    组件属性改变时回调事件类型
 	 */
 	bind(el, afterClose) {

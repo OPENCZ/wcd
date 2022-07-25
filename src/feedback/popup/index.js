@@ -6,10 +6,10 @@ import {
 } from '../../utils';
 
 /**
- * 抽屉
+ * 弹出
  */
 @customElementsDefine
-class DrawerComponent extends CreateHTMLElement {
+class PopupComponent extends CreateHTMLElement {
 	/**
 	 * 监听属性
 	 * @returns {string[]}      需要被监听的属性名
@@ -88,7 +88,7 @@ class DrawerComponent extends CreateHTMLElement {
 	show() {
 		this.setOffsetStyle();
 
-		let el = $(this.shadowRoot).find('.drawer-wrapper').addClass('visible');
+		let el = $(this.shadowRoot).find('.popup-wrapper').addClass('visible');
 
 		setTimeout(() => $(el).addClass('show'), 50);
 	}
@@ -107,7 +107,7 @@ class DrawerComponent extends CreateHTMLElement {
 
 		if (offset) {
 			$(this.shadowRoot)
-				.find('.drawer-wrapper')
+				.find('.popup-wrapper')
 				.css({
 					top: 0,
 					right: 0,
@@ -124,7 +124,7 @@ class DrawerComponent extends CreateHTMLElement {
 	 */
 	hide(cb = () => {}) {
 		let el = $(this.shadowRoot)
-			.find('.drawer-wrapper')
+			.find('.popup-wrapper')
 			.removeClass('show')
 			.addClass('hide');
 
@@ -140,10 +140,10 @@ class DrawerComponent extends CreateHTMLElement {
 	 */
 	onClick() {
 		$(this.shadowRoot)
-			.find('.drawer-wrapper')
+			.find('.popup-wrapper')
 			.on('click', ev => {
 				$(this).attr('mask-closable') !== 'false' &&
-				$(ev.target).hasClass('drawer-wrapper')
+				$(ev.target).hasClass('popup-wrapper')
 					? this.hide()
 					: '';
 			});
@@ -160,7 +160,7 @@ class DrawerComponent extends CreateHTMLElement {
                     display: block !important;
                 }
                 
-                .drawer-wrapper {
+                .popup-wrapper {
                     position: fixed;
                     top: 0;
                     right: 0;
@@ -174,19 +174,19 @@ class DrawerComponent extends CreateHTMLElement {
                     transition: .3s;
                 }
                 
-                .drawer-wrapper.visible {
+                .popup-wrapper.visible {
                     display: flex;
                 }
                 
-                .drawer-wrapper.show, .drawer-wrapper.show .drawer-box {
+                .popup-wrapper.show, .popup-wrapper.show .popup-box {
                     opacity: 1;
                 }
                 
-                .drawer-wrapper.hide {
+                .popup-wrapper.hide {
                     opacity: 0;
                 }
                 
-                .drawer-wrapper .drawer-box {
+                .popup-wrapper .popup-box {
                     max-width: 100%;
                     max-height: 100%;
                     overflow-scrolling: touch;
@@ -196,65 +196,65 @@ class DrawerComponent extends CreateHTMLElement {
                     text-align: left;
                 }
                 
-                :host([align=top]) .drawer-wrapper {
+                :host([align=top]) .popup-wrapper {
                     align-items: flex-start;
                 }
                 
-                :host([align=top]) .drawer-wrapper .drawer-box,
-                :host([align=top]) .drawer-wrapper.hide .drawer-box {
+                :host([align=top]) .popup-wrapper .popup-box,
+                :host([align=top]) .popup-wrapper.hide .popup-box {
                     transform: translate(0, -100%);
                 }
                 
-                :host([align=right]) .drawer-wrapper {
+                :host([align=right]) .popup-wrapper {
                     justify-content: flex-end;
                 }
                 
                 
-                :host([align=right]) .drawer-wrapper .drawer-box, 
-                :host([align=right]) .drawer-wrapper.hide .drawer-box {
+                :host([align=right]) .popup-wrapper .popup-box, 
+                :host([align=right]) .popup-wrapper.hide .popup-box {
                     transform: translate(100%, 0);
                 }
                 
                 
-                :host([align=bottom]) .drawer-wrapper {
+                :host([align=bottom]) .popup-wrapper {
                     align-items: flex-end;
                 }
                 
-                :host([align=bottom]) .drawer-wrapper .drawer-box, 
-                :host([align=bottom]) .drawer-wrapper.hide .drawer-box {
+                :host([align=bottom]) .popup-wrapper .popup-box, 
+                :host([align=bottom]) .popup-wrapper.hide .popup-box {
                     transform: translate(0, 100%);
                 }
                 
-                :host([align=left]) .drawer-wrapper .drawer-box, 
-                :host([align=left]) .drawer-wrapper.hide .drawer-box {
+                :host([align=left]) .popup-wrapper .popup-box, 
+                :host([align=left]) .popup-wrapper.hide .popup-box {
                     transform: translate(-100%, 0);
                 }
                 
-                :host([align=center]) .drawer-wrapper {
+                :host([align=center]) .popup-wrapper {
                     justify-content: center;
                     align-items: center
                 }
                 
-                :host([align=center]) .drawer-wrapper .drawer-box, 
-                :host([align=center]) .drawer-wrapper.hide .drawer-box {
+                :host([align=center]) .popup-wrapper .popup-box, 
+                :host([align=center]) .popup-wrapper.hide .popup-box {
                     transform: scale(0.8);
                 }
                 
-                :host([align=top]) .drawer-wrapper .drawer-box,
-                :host([align=top]) .drawer-wrapper .drawer-box ::slotted(*),
-                :host([align=bottom]) .drawer-wrapper .drawer-box,
-                :host([align=bottom]) .drawer-wrapper .drawer-box ::slotted(*) {
+                :host([align=top]) .popup-wrapper .popup-box,
+                :host([align=top]) .popup-wrapper .popup-box ::slotted(*),
+                :host([align=bottom]) .popup-wrapper .popup-box,
+                :host([align=bottom]) .popup-wrapper .popup-box ::slotted(*) {
                     width: 100%;
                 }
                 
-                :host([align=right]) .drawer-wrapper .drawer-box,
-                :host([align=right]) .drawer-wrapper .drawer-box ::slotted(*),
-                :host([align=left]) .drawer-wrapper .drawer-box,
-                :host([align=left]) .drawer-wrapper .drawer-box ::slotted(*) {
+                :host([align=right]) .popup-wrapper .popup-box,
+                :host([align=right]) .popup-wrapper .popup-box ::slotted(*),
+                :host([align=left]) .popup-wrapper .popup-box,
+                :host([align=left]) .popup-wrapper .popup-box ::slotted(*) {
                     height: 100%;
                 }
                 
-                :host([align]) .drawer-wrapper.show .drawer-box {
+                :host([align]) .popup-wrapper.show .popup-box {
                     transform: translate(0, 0);
                 }
                 
@@ -264,8 +264,8 @@ class DrawerComponent extends CreateHTMLElement {
                 }
             </style>
                 
-            <div class="drawer-wrapper">
-                <div class="drawer-box">
+            <div class="popup-wrapper">
+                <div class="popup-box">
                     <slot></slot>
                 </div>
             </div>

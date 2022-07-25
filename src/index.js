@@ -18,7 +18,7 @@ import './form/radio';
 
 export { Dialog } from './feedback/dialog';
 
-import './feedback/drawer';
+import './feedback/popup';
 
 import './feedback/half-screen-dialog';
 

@@ -5,7 +5,7 @@ import {
 	config,
 	customElementsDefine,
 } from '../../utils';
-import './../drawer';
+import '../popup';
 
 /**
  * 半屏对话框
@@ -45,7 +45,7 @@ class HalfScreenDialogComponent extends CreateHTMLElement {
 	attributeChangedCallback(name, oldValue, newValue) {
 		if (oldValue !== newValue) {
 			$(this.shadowRoot)
-				.find(`${config.prefix}-drawer`)
+				.find(`${config.prefix}-popup`)
 				.attr('visible', newValue);
 		}
 	}
@@ -70,7 +70,7 @@ class HalfScreenDialogComponent extends CreateHTMLElement {
 	 */
 	bind() {
 		$(this.shadowRoot)
-			.find(`${config.prefix}-drawer`)
+			.find(`${config.prefix}-popup`)
 			.on('change', ev => {
 				this.visible = ev.detail.visible;
 			});
@@ -84,7 +84,7 @@ class HalfScreenDialogComponent extends CreateHTMLElement {
 		let borderRadius = $(this).attr('border-radius') || 24;
 
 		return `
-            <${config.prefix}-drawer 
+            <${config.prefix}-popup 
                 visible="${this.visible || false}"
                 mask-closable="${$(this).attr('mask-closable') || true}"
                 align="bottom"
@@ -125,7 +125,7 @@ class HalfScreenDialogComponent extends CreateHTMLElement {
                     <slot name="body"></slot>
                     <slot name="footer"></slot>
                 </div>
-            </${config.prefix}-drawer>
+            </${config.prefix}-popup>
         `;
 	}
 }

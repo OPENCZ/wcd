@@ -5,7 +5,7 @@ import {
 	CreateHTMLElement,
 	config,
 } from '../../utils';
-import './../drawer';
+import '../popup';
 
 /**
  * 对话框
@@ -46,7 +46,7 @@ class DialogComponent extends CreateHTMLElement {
 	attributeChangedCallback(name, oldValue, newValue) {
 		if (oldValue !== newValue) {
 			$(this.shadowRoot)
-				.find(`${config.prefix}-drawer`)
+				.find(`${config.prefix}-popup`)
 				.attr('visible', newValue);
 		}
 	}
@@ -63,7 +63,7 @@ class DialogComponent extends CreateHTMLElement {
 	 */
 	onChange() {
 		$(this.shadowRoot)
-			.find(`${config.prefix}-drawer`)
+			.find(`${config.prefix}-popup`)
 			.on('change', ev => (this.visible = ev.detail.visible));
 	}
 
@@ -82,7 +82,7 @@ class DialogComponent extends CreateHTMLElement {
 	 */
 	render() {
 		return `
-            <${config.prefix}-drawer 
+            <${config.prefix}-popup 
                 visible="${$(this).attr('visible') || false}"
                 mask-closable="${$(this).attr('mask-closable') || true}"
                 align="center"
@@ -134,7 +134,7 @@ class DialogComponent extends CreateHTMLElement {
                     <slot name="body"></slot>
                     <slot name="footer"></slot>
                 </div>
-            </${config.prefix}-drawer>
+            </${config.prefix}-popup>
         `;
 	}
 }

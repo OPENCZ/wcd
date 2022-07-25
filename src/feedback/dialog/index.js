@@ -45,7 +45,7 @@ export class Dialog {
 												: `<button data-index="0">我知道了</button>`
 										}
                 </div>
-            </${config.prefix}-drawer>
+            </${config.prefix}-popup>
         `;
 
 		$(document.body).append(str);
