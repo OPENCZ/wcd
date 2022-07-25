@@ -6,7 +6,7 @@ import {
 } from '../../utils';
 
 /**
- * 弹出
+ * 弹出窗
  */
 @customElementsDefine
 class PopupComponent extends CreateHTMLElement {
