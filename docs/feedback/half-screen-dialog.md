@@ -2,7 +2,7 @@
 
 底部弹起的模态面板，包含与当前情境相关的多个选项。
 
-基于 [Drawer](/feedback/drawer) 组件封装。
+基于 [Popup](/feedback/popup) 组件封装。
 
 ## 何时使用
 
