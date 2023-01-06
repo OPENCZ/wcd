@@ -16,6 +16,8 @@ import './form/switch';
 
 import './form/radio';
 
+import './form/upload';
+
 export { Dialog } from './feedback/dialog';
 
 import './feedback/popup';
