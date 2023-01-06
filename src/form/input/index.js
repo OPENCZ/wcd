@@ -170,6 +170,7 @@ class InputComponent extends CreateHTMLElement {
 			$(this.shadowRoot)
 				.find('.icon-box.clear')
 				.on('click', () => {
+					this.dispatch('clear');
 					this.value = '';
 
 					this.setMaxLength();
