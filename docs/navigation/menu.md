@@ -47,7 +47,7 @@
         </wc-submenu>
         <wc-submenu>
             <span slot="title">反馈</span>
-            <wc-menu-item>抽屉组件</wc-menu-item>
+            <wc-menu-item>弹出窗组件</wc-menu-item>
             <wc-menu-item>对话框组件</wc-menu-item>
             <wc-menu-item>加载中组件</wc-menu-item>
         </wc-submenu>
@@ -68,7 +68,7 @@
         </wc-menu-group>
         <wc-menu-group>
             <span slot="title">反馈</span>
-            <wc-menu-item>抽屉组件</wc-menu-item>
+            <wc-menu-item>弹出窗组件</wc-menu-item>
             <wc-menu-item>对话框组件</wc-menu-item>
             <wc-menu-item>加载中组件</wc-menu-item>
         </wc-menu-group>
