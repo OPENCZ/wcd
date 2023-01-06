@@ -15,7 +15,7 @@ class RowComponent extends CreateHTMLElement {
 	 * @returns {string[]}      需要被监听的属性名
 	 */
 	static get observedAttributes() {
-		return ['align', 'justify'];
+		return ['align', 'justify', 'layout', 'flex'];
 	}
 
 	/**
@@ -28,14 +28,24 @@ class RowComponent extends CreateHTMLElement {
 		if (oldValue !== newValue) {
 			let style = $(this.shadow).find('style');
 
-			// 设置横向对齐样式
-			if (name === 'justify') {
-				$(style).eq(2).html(this.setJustifyStyle());
-			}
+			switch (name) {
+				case 'layout':
+					$(this).css('flex-direction', newValue)
+					break;
 
-			// 设置垂直对齐样式
-			if (name === 'align') {
-				$(style).eq(1).html(this.setAlignStyle());
+				case 'flex':
+					$(this).css(name, newValue)
+					break;
+
+				// 设置横向对齐样式
+				case 'justify':
+					$(style).eq(2).html(this.setJustifyStyle());
+					break;
+
+				// 设置横向对齐样式
+				case 'align':
+					$(style).eq(1).html(this.setAlignStyle());
+					break;
 			}
 		}
 	}
@@ -49,7 +59,22 @@ class RowComponent extends CreateHTMLElement {
             <style>
                 :host {
                     display: flex;
+                	width: 100%;
                     flex-wrap: wrap;
+                	${
+						$(this).attr('layout')
+							? `flex-direction: ${$(this).attr('layout')};`
+							: ''
+					}
+                	${
+						$(this).attr('flex')
+							? `flex: ${$(this).attr('flex')};`
+							: ''
+					}
+                }
+                
+                :host([layout=column]) ::slotted(*), :host([layout=column-reverse]) ::slotted(*) {
+                	width: 100%;
                 }
             </style>
             
@@ -88,13 +113,17 @@ class RowComponent extends CreateHTMLElement {
 	 */
 	setAlignStyle() {
 		let alignValue = $(this).attr('align');
-		if (!alignValue) return ``;
+
+		if (!alignValue) return '';
 
 		let styleName = alignValue.includes('space')
 			? 'align-content'
 			: 'align-items';
+
 		let styleValue = `${
-			alignValue === 'start' || alignValue === 'end' ? 'flex-' : ''
+			alignValue === 'start' || alignValue === 'end' 
+				? 'flex-' 
+				: ''
 		}${alignValue}`;
 
 		return `
@@ -103,14 +132,14 @@ class RowComponent extends CreateHTMLElement {
             }
             
             ${
-							alignValue.includes('space')
-								? `
-                        :host([align=${alignValue}]) ${config.prefix}-col {
-                            width: 100% !important;
-                        }
-                    `
-								: ``
+				alignValue.includes('space')
+					? `
+						:host([align=${alignValue}]) ${config.prefix}-col {
+							width: 100% !important;
 						}
+					`
+					: ``
+			}
         `;
 	}
 }

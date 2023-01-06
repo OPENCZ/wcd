@@ -16,7 +16,7 @@ class ColComponent extends CreateHTMLElement {
 	 * @returns {string[]}      需要被监听的属性名
 	 */
 	static get observedAttributes() {
-		return ['span', 'offset', 'align', 'justify'];
+		return ['span', 'offset', 'align', 'justify', 'layout', 'flex'];
 	}
 
 	/**
@@ -27,19 +27,25 @@ class ColComponent extends CreateHTMLElement {
 	 */
 	attributeChangedCallback(name, oldValue, newValue) {
 		if (oldValue !== newValue) {
-			console.log(name);
 			let style = $(this.shadowRoot).find('style');
 
 			switch (name) {
+				case 'layout':
+					$(this).css('flex-direction', newValue)
+					break;
+
 				case 'span':
 					$(style).eq(1).html(this.setSpanStyle());
 					break;
+
 				case 'offset':
 					$(style).eq(2).html(this.setOffsetStyle());
 					break;
+
 				case 'justify':
 					$(style).eq(3).html(this.setJustifyStyle());
 					break;
+
 				case 'align':
 					$(style).eq(4).html(this.setAlignStyle());
 					break;
@@ -56,6 +62,16 @@ class ColComponent extends CreateHTMLElement {
             <style>
                 :host {
                     display: none;
+                	${
+						$(this).attr('layout')
+							? `flex-direction: ${$(this).attr('layout')};`
+							: ''
+					}
+					${
+						$(this).attr('flex')
+							? `flex: ${$(this).attr('flex')};`
+							: ''
+					}
                 }
             </style>
             
@@ -87,7 +103,7 @@ class ColComponent extends CreateHTMLElement {
 			spanObject = null;
 
 		if (span?.startsWith('{') && span?.endsWith('}')) {
-			spanObject = this.JSONStringFormat(span);
+			spanObject = JSONStringFormat(span);
 		} else {
 			spanObject = {
 				xs: span,
@@ -100,27 +116,30 @@ class ColComponent extends CreateHTMLElement {
 			if (key === 'col') return;
 
 			let span = spanObject[key];
-
 			if (typeof spanObject[key] != 'undefined') {
 				span > config.grid.col ? (span = config.grid.col) : '';
 
-				let style = span?.includes('flex')
+				let style = span === 'flex'
 					? `flex: 1;`
-					: !isNaN(parseInt(span))
-					? `width: ${(parseInt(span) / config.grid.col) * 100}%;`
-					: ``;
+					: `width: ${
+						isNaN(Number(span))
+							?  span
+							: `${(parseInt(span) / config.grid.col) * 100}%`
+					};`
 
 				let setWidth = () => `
                     :host {
-                        display: ${span == 0 ? 'none' : 'block'};
+                        display: ${
+							!span 
+								? 'none' 
+								: $(this).attr('layout')?.includes('column') ? 'flex' : 'block'
+						};
                         ${style}
                     }
                 `;
 
 				let setMediaStyle = () => `
-                    @media only screen and (min-width: ${
-											config.grid[key] - 1
-										}px) {
+                    @media only screen and (min-width: ${config.grid[key] - 1}px) {
                         :host {
                             display: none;
                         }
@@ -145,7 +164,7 @@ class ColComponent extends CreateHTMLElement {
 			offsetObject = null;
 
 		if (offset?.startsWith('{') && offset?.endsWith('}')) {
-			offsetObject = this.JSONStringFormat(offset);
+			offsetObject = JSONStringFormat(offset);
 		}
 
 		if (parseInt(offset) > 0) {
@@ -197,13 +216,17 @@ class ColComponent extends CreateHTMLElement {
 	 */
 	setAlignStyle() {
 		let alignValue = $(this).attr('align');
+
 		if (!alignValue) return ``;
 
 		let styleName = alignValue.includes('space')
 			? 'align-content'
 			: 'align-items';
+
 		let styleValue = `${
-			alignValue === 'start' || alignValue === 'end' ? 'flex-' : ''
+			alignValue === 'start' || alignValue === 'end' 
+				? 'flex-' 
+				: ''
 		}${alignValue}`;
 
 		return `
@@ -214,14 +237,14 @@ class ColComponent extends CreateHTMLElement {
             }
             
             ${
-							alignValue.includes('space')
-								? `
+				alignValue.includes('space')
+					? `
                         :host([align=${alignValue}]) ::slotted(*) {
                             width: 100% !important;
                         }
                     `
-								: ``
-						}
+					: ``
+			}
         `;
 	}
 }
