@@ -28,6 +28,7 @@
     - [Radio 单选框](/form/radio.md)
     - [Select 选择框](/form/select.md)
     - [Switch 开关](/form/switch.md)
+    - [Upload 上传](/form/upload.md)
   - 导航
     - [Breadcrumb 面包屑](/navigation/breadcrumb.md)
     - [Menu 侧边栏菜单](/navigation/menu.md)
